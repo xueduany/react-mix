@@ -1,7 +1,7 @@
 /**
  * 定义公共的全局变量，比如图片使用的cdn地址
  */
-window.IMG_CDN_PREFIX = 'http://10.32.184.134:5389/res/';
+window.IMG_CDN_PREFIX = 'http://cdn.taobao.com/';
 
 //导入UI的css
 includeCSS("require('./css/lightningStorm')");
