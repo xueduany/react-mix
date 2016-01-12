@@ -1,0 +1,83 @@
+/**
+** base
+**/
+body {
+	margin: 0;
+	padding: 0;
+}
+
+/**
+** index
+**/
+#J-block-test {
+	background-color: yellow;
+	height: 2rem;
+}
+.j-j_j {
+	display: flex;
+	color: red;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+.i_i-i {
+	color: black;
+}
+.j-j_j.i_i-i {
+	color: green;
+}
+
+.index-contains {
+	flex: 1;
+	align-items: center;
+}
+.index-goDiv {
+	display: flex;
+	flex-direction: row;
+	alignItems: center;
+	padding: 10;
+	justify-content: center;
+}
+.index-btn {
+	display: flex;
+	flex: 1;
+	align-items: center;
+	justify-content: center;
+	flex-direction: row;
+	padding: 10pt;
+}
+.index-list-row .index-list-leftImg {
+	width: 3rem;
+	display: flex;
+	padding-top: .5rem;
+	flex-direction: row;
+	justify-content: center;
+}
+.index-list-leftImg-img{
+	width: 2rem;
+	height: 2rem;
+}
+.index-list-row {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+}
+.index-list-row .index-list-rightBox {
+	flex: 1;
+}
+.index-list-row .index-list-rightBox-row-desc {
+	background-color: red;
+}
+.index-list-complexRow .index-list-rightBox .index-list-rightBox-row {
+	background-color: green;
+	color: red;
+}
+
+#jjj {
+	background-color: green;
+}
+
+SimpleListView {
+	background-color: yellow;
+}
+

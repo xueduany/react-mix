@@ -1,0 +1,13 @@
+.imgList {
+	position: relative;
+}
+.float-bg {
+	background-color: gray;
+	color: #000;
+	opacity: 0.2;
+	height: 4rem;
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+}
