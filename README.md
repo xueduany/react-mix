@@ -29,6 +29,7 @@ Both support ReactNative Android and IOS, more UI component is still in dev!
 - 支持常用的dom操作api，比如insertBefore, html等等，你经常使用的api
 - 支持ReactNative代码的分割打包，这样你可以把reactnative的框架代码保存在app本地，但是业务代码通过在线直连的方法更新，保证网络传输量最小
 
+而且我们是基于自动化脚本动态翻译的方式，使得现有的HTML+CSS+JS的代码可以无修改的直接转换成为reactnative代码，且一套不需要修改的代码，直接在iOS,andorid,winphone,H5,PC平台实现展现完全一致
 
 ## Getting Started
 
