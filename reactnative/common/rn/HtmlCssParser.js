@@ -8,7 +8,11 @@ class HtmlCssParser{
 			var v = cssObject[k];
 			if(/(.+)(rem)/i.test(v)){
 				//
-				v = window.STYLESHEET.baseFontSize * parseFloat(v.match(/(.+)(rem)/)[1]);
+				v = window.STYLESHEET.remUnit * parseFloat(v.match(/(.+)(rem)/)[1]);
+				v = parseFloat(v);
+			}else if(/(.+)(em)/i.test(v)){
+				//
+				v = window.STYLESHEET.emUnit * parseFloat(v.match(/(.+)(em)/)[1]);
 				v = parseFloat(v);
 			}else if(/(.+)(%)/.test(v)){
 				
