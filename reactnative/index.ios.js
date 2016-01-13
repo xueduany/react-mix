@@ -4,4 +4,4 @@
 import './common/LightningStorm';
 
 
-import './example_localStorage.js';
+import './index.js';
