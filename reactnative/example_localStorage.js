@@ -1,6 +1,6 @@
 import './common/LightningStorm';
 
-(class TestPage extends Element{
+(class TestPage extends App{
 	render(){
 		return (
 			<Div id="J1">

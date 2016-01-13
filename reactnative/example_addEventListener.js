@@ -1,6 +1,6 @@
 import './common/LightningStorm';
 
-(class TestPage extends Element{
+(class TestPage extends App{
 	componentDidMount(){
 		$('#J2').addEventListener('click', function(){
 			alert(3);
