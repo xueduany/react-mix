@@ -68,6 +68,7 @@ Both support ReactNative Android and IOS, more UI component is still in dev!
 - common/LightningStorm.js是框架文件
 - common/rn目录是reactnative的UI组件文件，适配与native组件
 - 对应的在根目录web目录也有一个叫做common/html对应的是适配与H5的UI组件文件,和common/rn目录的API保持一致，但是不同实现
+- reactnative目录增加了一些demo的例子
 
 ## Demo
 
