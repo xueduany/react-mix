@@ -56,6 +56,9 @@ Both support ReactNative Android and IOS, more UI component is still in dev!
 ## Documentation
 
 第一篇原理揭秘文章在http://www.cnblogs.com/xueduanyang/p/5125781.html
+
+系列学习文章连载中http://www.cnblogs.com/xueduanyang/p/5128690.html
+
 更多的文档和例子正在完善中。。。
 
 ## react-native目录主要文件介绍
