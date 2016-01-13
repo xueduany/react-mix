@@ -4,4 +4,4 @@
 import './common/LightningStorm';
 
 
-import './example_addEventListener.js';
+import './index.js';
