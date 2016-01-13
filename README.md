@@ -1,4 +1,4 @@
-# React Mix [![Dev Status](https://https://github.com/xueduany/react-mix.git)](https://github.com/xueduany/react-mix.git)  
+# React Mix 
 
 React Mix enables you to build all platform application base on React-Native. We create a mid-layer to support all CSS gramma, all JS dom event, all H5 framework on React-Native, and We have done these:
 - support CSS className
@@ -29,6 +29,7 @@ Both support ReactNative Android and IOS, more UI component is still in dev!
 - 支持常用的dom操作api，比如insertBefore, html等等，你经常使用的api
 - 支持ReactNative代码的分割打包，这样你可以把reactnative的框架代码保存在app本地，但是业务代码通过在线直连的方法更新，保证网络传输量最小
 
+而且我们是基于自动化脚本动态翻译的方式，使得现有的HTML+CSS+JS的代码可以无修改的直接转换成为reactnative代码，且一套不需要修改的代码，直接在iOS,andorid,winphone,H5,PC平台实现展现完全一致
 
 ## Getting Started
 
@@ -37,6 +38,13 @@ Both support ReactNative Android and IOS, more UI component is still in dev!
 - 我们通过代号为lightningStorm的框架代码使得reactnative支持类似html标签，和模拟css，和模拟dom api，框架地址为./reactnative/common/LightningStorm.js
 - 你可以打开安卓或者ios的reactnative的项目，来查看demo的例子，来了解我们的工作模式
 - 我们模拟了HTML常用的多个节点，比如Div替代了reactnative的View，Span替换了reactnative的Text, Img替换了reactnative的Image，其中Div, Span, Img的用法和HTML语法的基本用法保持一致
+- 主要文件说明如下: iOS入口文件还是index.ios.js,安卓同理index.android.js，但是里面只是壳子，import了框架的lightningStorm，大家都引用的index.js，这个是真正的业务入口
+- H5的入口文件也是html的壳子，在./web/index.html，同理引用的是index.build.js，这个文件基于webpack.config.js打包同步自动生成的，打包文件有详细的入口是依赖和iOS同样的index.ios.js
+- 项目中的三个重要的打包文件一个同步翻译css到react使用的css，是react.css.build.js，基于node实现的css同步翻译脚本
+- webpack.config.js是用来实现H5平台的同步翻译，把reactnative的index.ios.js同步翻译成为H5平台的业务代码
+- H5和app共用一套css代码，在./css目录里面，在文件中加载css的API暂定为includeCSS
+- 未来会支持所有现有的CSS的功能，包括ReactNative不支持的display，甚至是伪类等等，还有media query都会计划支持到
+- 目前拆出来的js文件，不包括完整的UI Component部分，UI部分计划另外开源，即时你不适用我们的ReactMix框架，你可以适用我们的UI在React或者ReactNative上面
 
 
 ## Getting Help
@@ -45,6 +53,7 @@ Both support ReactNative Android and IOS, more UI component is still in dev!
 
 ## Documentation
 
+第一篇原理揭秘文章在http://www.cnblogs.com/xueduanyang/p/5125781.html
 更多的文档和例子正在完善中。。。
 
 ## Demo
