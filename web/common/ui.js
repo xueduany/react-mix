@@ -4,7 +4,6 @@ window.Span = require('./html/Span');
 window.Input = require('./html/Input');
 window.Button = require('./html/Button');
 window.Navigator = require('./html/Navigator');
-window.STYLESHEET = {};
 window.NavBar = require('./html/NavBar');
 window.ListView = require('./html/ListView');
 window.Img = require('./html/Img');

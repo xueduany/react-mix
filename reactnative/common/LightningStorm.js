@@ -15,6 +15,11 @@ window.DOMTREE_BYID = {};
 window.DOMTREE_BYCLASS = {};
 //并入定时器api，为componentWillUnMount做准备
 window.TimerMixin = require('./TimerMixin');
+/**
+ * 创建全局通用的dom树和css树
+ */
+var StyleSheet = require('./StyleSheet');
+
 
 
 if(isNative) {
@@ -22,10 +27,6 @@ if(isNative) {
 	window.requireNativeComponent = React.requireNativeComponent;
 	window.Dimensions = require('Dimensions');
 	window.PixelRatio = require('PixelRatio');
-	/**
-	 * 创建全局通用的dom树和css树
-	 */
-	var StyleSheet = require('./StyleSheet');
 	window.STYLESHEET = new StyleSheet();
 	//
 	window.Element = require('./rn/Element');
@@ -60,13 +61,14 @@ if(isNative) {
 }else{
 	//这里是ui.js
 	window.StateStore = require('./StateStore');
+	window.STYLESHEET = new StyleSheet();
 }
 
 /**
  * 全局加载css的函数方法
  */
-window.includeCSS = (o) => {
-	return STYLESHEET.includeCSS(o);
+window.includeCSS = function(o){
+	window.STYLESHEET.includeCSS(o);
 }
 
 window.TemplateFill = function(template, source){

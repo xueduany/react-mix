@@ -9,13 +9,11 @@ class StyleSheet{
 		 * * rem基本单位
 		 */
 		if(isNative){
+			this.dpr = PixelRatio.get();
+			// var scale = 1 / (dpr > 1 ? 2 : dpr);
 			// 横屏竖屏的分辨率
 			window.windowHeight = Dimensions.get('window').height;
 			window.windowWidth = Dimensions.get('window').width;
-			
-			this.dpr = PixelRatio.get();
-			// var scale = 1 / (dpr > 1 ? 2 : dpr);
-
 			
 			this.remUnit = 20 * (windowWidth / 320);
 			this.remUnit = (this.remUnit > 54) ? 54: this.remUnit;
@@ -57,7 +55,7 @@ class StyleSheet{
 				
 				window.windowHeight = document.documentElement.clientHeight;
 				window.windowWidth = document.documentElement.clientWidth;
-			})();
+			}).call(this);
 		}
 	}
 	includeCSS(o){
