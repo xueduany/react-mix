@@ -34,6 +34,8 @@ Both support ReactNative Android and IOS, more UI component is still in dev!
 ## Getting Started
 
 - 从github上下载工程，然后在根目录执行一遍npm install，再进入reactnative目录执行一遍npm install
+- Mac的同学，可以直接执行install.sh,功能第一条类似，分别在更目录执行npm install和在./reactnative目录执行npm install
+- 根目录的npm主要是用来执行css动态翻译，以及web用的js动态翻译的，./reactnaitve的npm主要用来执行reactnative
 - 从根目录开始，reactnative目录是主要的业务开发代码，web目录是H5相关的代码
 - 我们通过代号为lightningStorm的框架代码使得reactnative支持类似html标签，和模拟css，和模拟dom api，框架地址为./reactnative/common/LightningStorm.js
 - 你可以打开安卓或者ios的reactnative的项目，来查看demo的例子，来了解我们的工作模式
