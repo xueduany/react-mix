@@ -1,6 +1,6 @@
 import './common/LightningStorm';
 
-class TestPage extends Element{
+(class TestPage extends Element{
 	componentDidMount(){
 		$('#J2').addEventListener('click', function(){
 			alert(3);
@@ -16,15 +16,6 @@ class TestPage extends Element{
 		);
 		
 	}
-}
-
-/**
- * app 主入口
- */
-if(isNative) {
-	React.AppRegistry.registerComponent('native', () => TestPage);
-}else{
-	React.render(React.createElement(TestPage, null), document.body);
-}
+}).run();
 
 

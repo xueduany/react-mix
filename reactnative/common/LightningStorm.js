@@ -65,7 +65,7 @@ if(isNative) {
 	window.StateStore = require('./StateStore');
 	window.STYLESHEET = new StyleSheet();
 }
-
+window.App = require('./App');
 /**
  * 全局加载css的函数方法
  */

@@ -9,8 +9,8 @@ includeCSS("require('./css/lightningStorm')");
 /**
  * 首页的例子代码如下, 只是初始化一个导航栏，未来应该会包装掉这个导航栏
  */
-var homepage = React.createClass({
-	render: function() {
+(class HomePage extends App{
+	render() {
 		  return (
 				  <Navigator
 			    	  initialRoute={{page: require('./vsIndex')}}
@@ -21,16 +21,4 @@ var homepage = React.createClass({
 				  />
 		  );
 	}
-});
-/**
- * app 主入口
- */
-if(isNative) {
-	React.AppRegistry.registerComponent('native', () => homepage);
-}else{
-	React.render(React.createElement(homepage, null), document.body);
-}
-
-
-
-
+}).run();

@@ -1,6 +1,6 @@
 import './common/LightningStorm';
 
-class TestPage extends Element{
+(class TestPage extends Element{
 	render(){
 		return (
 			<Div id="J1" onTouchStart={(e)=>{console.log(e)}}>
@@ -11,15 +11,4 @@ class TestPage extends Element{
 		);
 		
 	}
-}
-
-/**
- * app 主入口
- */
-if(isNative) {
-	React.AppRegistry.registerComponent('native', () => TestPage);
-}else{
-	React.render(React.createElement(TestPage, null), document.body);
-}
-
-
+}).run();
