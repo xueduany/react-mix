@@ -2,7 +2,6 @@ String.prototype.capitalizeFirstLetter = function() {
     return this.charAt(0).toUpperCase() + this.slice(1);
 }
 
-var htmlCssParser = require('./HtmlCssParser');
 var DomEvent = require('../DomEvent');
 
 var UIManager = require('NativeModules').UIManager;
@@ -167,7 +166,7 @@ class Element extends React.Component {
 					onTouchStart={(e)=>{this.handleEvent.call(this, new DomEvent({type: 'touchStart',reactEvent: e}));}}
 					onTouchMove={(e)=>{this.handleEvent.call(this, new DomEvent({type: 'touchMove',reactEvent: e}));}}
 					onTouchEnd={(e)=>{this.handleEvent.call(this, new DomEvent({type: 'touchEnd',reactEvent: e}));}}
-					style={htmlCssParser.removeTextStyleFromViewStyle(this.htmlProps.style)}>
+					style={htmlCssParser.filterViewStyle(this.htmlProps.style)}>
 					<Text style={TemplateFill({
 						color: null,
 						fontFamily: null,
@@ -217,7 +216,7 @@ class Element extends React.Component {
 						onTouchStart={(e)=>{this.handleEvent.call(this, new DomEvent({type: 'touchStart',reactEvent: e}));}}
 						onTouchMove={(e)=>{this.handleEvent.call(this, new DomEvent({type: 'touchMove',reactEvent: e}));}}
 						onTouchEnd={(e)=>{this.handleEvent.call(this, new DomEvent({type: 'touchEnd',reactEvent: e}));}}
-						style={htmlCssParser.removeTextStyleFromViewStyle(this.htmlProps.style)}>{htmlChildren}</View>
+						style={htmlCssParser.filterViewStyle(this.htmlProps.style)}>{htmlChildren}</View>
 					</TouchableWithoutFeedback>
 			);
 		}else{
@@ -229,7 +228,7 @@ class Element extends React.Component {
 					onTouchStart={(e)=>{this.handleEvent.call(this, new DomEvent({type: 'touchStart',reactEvent: e}));}}
 					onTouchMove={(e)=>{this.handleEvent.call(this, new DomEvent({type: 'touchMove',reactEvent: e}));}}
 					onTouchEnd={(e)=>{this.handleEvent.call(this, new DomEvent({type: 'touchEnd',reactEvent: e}));}}
-					style={htmlCssParser.removeTextStyleFromViewStyle(this.htmlProps.style)}
+					style={htmlCssParser.filterViewStyle(this.htmlProps.style)}
 				>
 					{this.props.children}
 				</View>
@@ -266,9 +265,10 @@ class Element extends React.Component {
 		/**
 		 * 默认字体使用rem
 		 */
-		this.htmlProps.style = {
+		this.defaultStyle = this.defaultStyle || {};
+		this.htmlProps.style = Object.assign({
 			fontSize: window.STYLESHEET.remUnit
-		};
+		}, this.defaultStyle);
 		this.htmlProps.className = [];
 		//这边是css权重算法
 		if(this.props.className) {

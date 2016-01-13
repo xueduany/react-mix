@@ -56,8 +56,10 @@ if(isNative) {
 	//
 	window.ScrollView = React.ScrollView;
 	//
-	window.localStorage = require('AsyncStorage');
+	window.localStorage = require('./LocalStorage');
 	window.StateStore = require('./StateStore');
+	window.htmlCssParser = require('./rn/HtmlCssParser');
+
 }else{
 	//这里是ui.js
 	window.StateStore = require('./StateStore');
@@ -71,10 +73,13 @@ window.includeCSS = function(o){
 	window.STYLESHEET.includeCSS(o);
 }
 
-window.TemplateFill = function(template, source){
+window.TemplateFill = function(){
 	var newT = {};
-	for(var k in template){
-		newT[k] = source[k] || null;
+	for(var i=1,template=arguments[0];i<arguments.length;i++){
+		var source = arguments[i];
+		for(var k in template){
+			newT[k] = source[k] || template[k];
+		}
 	}
 	return newT;
 }
