@@ -22,7 +22,7 @@ import './common/LightningStorm';
 	}
 	async testLocalStorage(){
 		console.debug('key is',$('#J_k').value);
-		var key = $('#J_k').value;
+		var key = $('#J_k').val();
 		if(key){
 			console.debug('value is',$('#J_v').value);
 			console.debug($('#J_v').value);

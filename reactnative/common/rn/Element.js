@@ -2,9 +2,6 @@ String.prototype.capitalizeFirstLetter = function() {
     return this.charAt(0).toUpperCase() + this.slice(1);
 }
 
-var DomEvent = require('../DomEvent');
-
-var UIManager = require('NativeModules').UIManager;
 
 //
 class Element extends React.Component {
@@ -12,18 +9,18 @@ class Element extends React.Component {
 		super();
 		this.events = {
 				onClick : React.PropTypes.func,
-				//onDbClick: React.PropTypes.func,
+				onDbClick: React.PropTypes.func,
 				//
 				//onAbort: React.PropTypes.func,
 				//onError: React.PropTypes.func,
 				//
-				//onFocus: React.PropTypes.func,
-				//onSelect: React.PropTypes.func,
-				//onBlur: React.PropTypes.func,
+				onFocus: React.PropTypes.func,
+				onSelect: React.PropTypes.func,
+				onBlur: React.PropTypes.func,
 				//
 				onLoad: React.PropTypes.func,
-				//onChange: React.PropTypes.func,
-				//onResize: React.PropTypes.func,
+				onChange: React.PropTypes.func,
+				onResize: React.PropTypes.func,
 				onUnLoad: React.PropTypes.func,
 				//
 				//onKeyDown: React.PropTypes.func,
@@ -44,10 +41,6 @@ class Element extends React.Component {
 			this.eventHandle[eventName] = [];
 		}
 		this.htmlProps = {};
-		this.state = {
-				windowHeight : windowHeight,
-				windowWidth : windowWidth
-		}
 		this.setTimeout = TimerMixin.setTimeout;
 		this.clearTimeout = TimerMixin.clearTimeout;
 		this.setInterval = TimerMixin.setInterval;
@@ -255,13 +248,12 @@ class Element extends React.Component {
 		for(var e in this.eventHandle){
 			this.eventHandle[e] = [];
 		}
-		var watchEventArray = ['click','touchStart', 'touchMove', 'touchEnd'];
-		watchEventArray.forEach(function(w){
-			var fn = self.props['on' + w.capitalizeFirstLetter()];
+		for(var eventName in this.events){
+			var fn = this.props[eventName];
 			if(fn){
-				self.addEventListener(w, fn);
+				self.addEventListener(eventName.substring(2).capitalizeFirstLetter(), fn);
 			}
-		})
+		}
 		/**
 		 * 默认字体使用rem
 		 */
@@ -369,13 +361,22 @@ class Element extends React.Component {
 	/**
 	 * reactnative版本的getComputedStyle，回调处理
 	 */
-	measure(callback){
-		UIManager.measure(React.findNodeHandle(this), (x, y, width, height, left, top) => {
-			callback.call(this, {
-				width: width,
-				height: height
-			});
-        })
+	offset(){
+		return new Promise((resolve, reject) => {
+			UIManager.measure(React.findNodeHandle(this), (x, y, width, height, left, top) =>  {
+				resolve({
+					x: x,
+					y: y,
+					left: left,
+					top: top,
+					width: width,
+					height: height
+				});
+	        });
+		});
+	}
+	addClass(){
+		
 	}
 }
 

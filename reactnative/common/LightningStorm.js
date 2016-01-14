@@ -1,3 +1,10 @@
+/**
+ * ReactMix Base Framework
+ * @version alpha
+ * @nickname lightningstorm project
+ * @author xueduanyang1985@163.com
+ */
+
 var window = window || new Function('return this')();
 window.isNative = true;
 if(window.document) {
@@ -6,8 +13,6 @@ if(window.document) {
 
 import './String';
 import './Date';
-
-
 
 //
 
@@ -28,6 +33,9 @@ if(isNative) {
 	window.Dimensions = require('Dimensions');
 	window.PixelRatio = require('PixelRatio');
 	window.STYLESHEET = new StyleSheet();
+	window.DomEvent = require('./DomEvent');
+	window.UIManager = require('NativeModules').UIManager;
+
 	//
 	window.Element = require('./rn/Element');
 	window.Text = React.Text;
