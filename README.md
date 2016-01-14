@@ -2,17 +2,19 @@
 
 React Mix enables you to build all platform application base on React-Native. We create a mid-layer to support all CSS gramma, all JS dom event, all H5 framework on React-Native, and We have done these:
 - support CSS className
-- support CSS unit, px, pt, rem
+- support CSS unit, px, pt, rem, em
 - unify box model measurement on all platform by CSS rem
-- support CSS two or more className combine or inherit
-- support CSS selector(part done, progress)
-- support DOM selector(part done, progress)
-- support DOM event, like onTouchXXXX, onLoad, onClick...eg(part done, progress)
-- support DOM Manipulation API like JQuery(part done, progress)
-- support ReactNative Bundle into two part, not single release, one is like common part, include nessesary component, bigger one, another is business code, smaller.
+- support CSS two or more className combine or inherit, such as (.className1 .className2 .className3...)inhreit , (.className1.className2.className3)combine
+- support CSS selector(part done, progress), have support #id, .className, tagName
+- support DOM selector(part done, progress), have support $('#id'), $('.className'), $('TagName'), $('CSS3 selector')(by sizzle)
+- support DOM event, like onTouchXXXX, onLoad, onClick...eg(done)
+- support DOM Manipulation API like JQuery(part done, progress), have support part JQuery DOM API, all done until February
+- support ReactNative Bundle into two part, not single release, one is like common part, include nessesary component, bigger one, another is business code, smaller.(done, read react-native.js.split.build.js)
 - and more...
 
 Both support ReactNative Android and IOS, more UI component is still in dev!
+
+We promise , we do not change any react-native core code, we only do auto translate tools!
 
 ## Introduction
 
