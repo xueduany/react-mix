@@ -13,6 +13,7 @@ if(window.document) {
 
 import './String';
 import './Date';
+import './console';
 
 //
 
