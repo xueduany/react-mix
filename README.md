@@ -16,6 +16,34 @@ Both support ReactNative Android and IOS, more UI component is still in dev!
 
 We promise , we do not change any react-native core code, we only do auto translate tools!
 
+## Have Suuport CSS Function
+- className
+- css unit, px , pt, em , rem
+- #id
+- .className
+- TagName
+- .className combin, like .a.b.c
+- .className inherit like .a .b .c
+
+## Have Support JQuery API
+- addClass
+- removeClass
+- hasClass
+- css
+- before
+- append
+- html
+- offset
+- attr
+
+## Have Support LocalStorage
+- API like webbrowser localstorage
+
+## Have Support Animation API
+- requestAnimationFrame
+- setInterval
+- setTimeout
+
 ## Introduction
 
 很高兴给大家介绍我们基于ReactNative框架实现的，目标是完全兼容现有的H5开发方式的新一代框架ReactMix, 相信大家已经使用ReactNative去开发各自的应用有一段时间了，在这段时间，因为ReactNative的API频繁变动，且文档不全，而对于已经习惯写js,css开发的前端工作者来说，ReactNative又是一种新的开发模式，现在ReactMix就是为了解决大家现在遇到的这些问题而来了。
