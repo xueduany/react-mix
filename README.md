@@ -37,7 +37,7 @@ We promise , we do not change any react-native core code, we only do auto transl
 - attr
 
 ## Have Support LocalStorage
-- API like webbrowser localstorage
+- API like webbrowser localstorage, example see ./reactnative/example_localstorage.js
 
 ## Have Support Animation API
 - requestAnimationFrame
