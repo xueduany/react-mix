@@ -36,6 +36,7 @@ We promise , we do not change any react-native core code, we only do auto transl
 - html
 - offset
 - attr
+- parent, because we simulate a DOM tree
 
 ## Have Support LocalStorage
 - API like webbrowser localstorage, example see ./reactnative/example_localstorage.js
