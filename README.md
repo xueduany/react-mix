@@ -37,6 +37,8 @@ We promise , we do not change any react-native core code, we only do auto transl
 - offset
 - attr
 - parent, because we simulate a DOM tree
+- on(=addEventListener)
+- off(=removeEventListener)
 
 ## Have Support LocalStorage
 - API like web browser localstorage, example see ./reactnative/example_localstorage.js

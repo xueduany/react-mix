@@ -473,6 +473,12 @@ class Element extends React.Component {
 			children: children
 		})
 	}
+	on(eventType, fn){
+		this.addEventListener(eventType, fn);
+	}
+	off(eventType, fn){
+		this.removeEventListener(eventType, fn);
+	}
 }
 
 module.exports = Element;
