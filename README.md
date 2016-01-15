@@ -26,6 +26,7 @@ We promise , we do not change any react-native core code, we only do auto transl
 - .className inherit like .a .b .c
 
 ## Have Support JQuery API
+- $, you can use $('#id'), $('.className') to find a instance
 - addClass
 - removeClass
 - hasClass
