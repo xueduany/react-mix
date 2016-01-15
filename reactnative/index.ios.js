@@ -4,4 +4,4 @@
 import './common/LightningStorm';
 
 
-import './example_formElement.js';
+import './index.js';
