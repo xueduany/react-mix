@@ -4,7 +4,6 @@ class LocalStorage{
 		for(var method in this.store){
 			this[method] = this.store[method];
 		}
-		console.debug(this);
 	}
 	async json(){
 		var keys = await this.getAllKeys();

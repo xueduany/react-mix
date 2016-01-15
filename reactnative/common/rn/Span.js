@@ -3,7 +3,7 @@ class Span extends Element {
 	render() {
 		this.compatHTML();
 		return (
-			<Text ref="i1" {...this.props} style={this.htmlProps.style} />
+			<Text ref="i1" {...this.htmlProps} style={this.htmlProps.style} />
 		);
 	}
 	

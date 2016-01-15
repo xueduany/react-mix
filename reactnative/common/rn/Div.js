@@ -1,6 +1,9 @@
 class Div extends Element {
 	constructor() {
 		super();
+		this.defaultStyle = {
+				color: 'black'
+		}
 	}
 	/*
 	componentWillMount(){

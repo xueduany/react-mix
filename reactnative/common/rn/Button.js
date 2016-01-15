@@ -36,7 +36,7 @@ class Button extends Element {
 		}, this.htmlProps.style);
 		var realStyle = htmlCssParser.filterTextStyle(s);
 		return (
-				<TouchableOpacity {...this.props} style={htmlCssParser.filterViewStyle(this.htmlProps.style)} onPress={(e)=>{this.handleEvent.call(this, {type: 'click'})}}>
+				<TouchableOpacity {...this.htmlProps} style={htmlCssParser.filterViewStyle(this.htmlProps.style)} onPress={(e)=>{this.handleEvent.call(this, {type: 'click'})}}>
 			     	<Text style={realStyle}>{this.props.children}</Text>
 			    </TouchableOpacity>
 				);

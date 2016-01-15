@@ -7,6 +7,7 @@ String.prototype.capitalizeFirstLetter = function() {
 class Element extends React.Component {
 	constructor() {
 		super();
+		this.state = this.state || {};
 		this.events = {
 				onClick : React.PropTypes.func,
 				onDbClick: React.PropTypes.func,
@@ -40,7 +41,6 @@ class Element extends React.Component {
 			this.eventHandle = this.eventHandle || {};
 			this.eventHandle[eventName] = [];
 		}
-		this.htmlProps = {};
 		this.setTimeout = TimerMixin.setTimeout;
 		this.clearTimeout = TimerMixin.clearTimeout;
 		this.setInterval = TimerMixin.setInterval;
@@ -155,7 +155,7 @@ class Element extends React.Component {
 				<TouchableWithoutFeedback onPress={(e)=>{this.handleEvent.call(this, new DomEvent({type: 'click', reactEvent: e}))}}>	
 				<View 
 					ref="i1"
-					{...this.props}
+					{...this.htmlProps}
 					onTouchStart={(e)=>{this.handleEvent.call(this, new DomEvent({type: 'touchStart',reactEvent: e}));}}
 					onTouchMove={(e)=>{this.handleEvent.call(this, new DomEvent({type: 'touchMove',reactEvent: e}));}}
 					onTouchEnd={(e)=>{this.handleEvent.call(this, new DomEvent({type: 'touchEnd',reactEvent: e}));}}
@@ -172,7 +172,7 @@ class Element extends React.Component {
 						textDecorationStyle: null,
 						textDecorationColor: null,
 						writingDirection: null
-					}, this.htmlProps.style)}>{this.props.children}</Text>
+					}, this.htmlProps.style)}>{this.state.children}</Text>
 				</View>
 				</TouchableWithoutFeedback>
 			);
@@ -201,15 +201,16 @@ class Element extends React.Component {
 				}
 				
 			});
+			this.state.children = htmlChildren;
 			return (
 					<TouchableWithoutFeedback onPress={(e)=>{this.handleEvent.call(this, new DomEvent({type: 'click', reactEvent: e}))}}>
 					<View 
 						ref="i1"
-						{...this.props}
+						{...this.htmlProps}
 						onTouchStart={(e)=>{this.handleEvent.call(this, new DomEvent({type: 'touchStart',reactEvent: e}));}}
 						onTouchMove={(e)=>{this.handleEvent.call(this, new DomEvent({type: 'touchMove',reactEvent: e}));}}
 						onTouchEnd={(e)=>{this.handleEvent.call(this, new DomEvent({type: 'touchEnd',reactEvent: e}));}}
-						style={htmlCssParser.filterViewStyle(this.htmlProps.style)}>{htmlChildren}</View>
+						style={htmlCssParser.filterViewStyle(this.htmlProps.style)}>{this.state.children}</View>
 					</TouchableWithoutFeedback>
 			);
 		}else{
@@ -217,13 +218,13 @@ class Element extends React.Component {
 				<TouchableWithoutFeedback onPress={(e)=>{this.handleEvent.call(this, new DomEvent({type: 'click', reactEvent: e}))}}>
 				<View
 					ref="i1"
-					{...this.props} 
+					{...this.htmlProps} 
 					onTouchStart={(e)=>{this.handleEvent.call(this, new DomEvent({type: 'touchStart',reactEvent: e}));}}
 					onTouchMove={(e)=>{this.handleEvent.call(this, new DomEvent({type: 'touchMove',reactEvent: e}));}}
 					onTouchEnd={(e)=>{this.handleEvent.call(this, new DomEvent({type: 'touchEnd',reactEvent: e}));}}
 					style={htmlCssParser.filterViewStyle(this.htmlProps.style)}
 				>
-					{this.props.children}
+					{this.state.children}
 				</View>
 				</TouchableWithoutFeedback>
 			);
@@ -235,13 +236,17 @@ class Element extends React.Component {
 	 */
 	compatHTML(conf) {
 		var self = this;
+		self.state = self.state || {};
+		self.state.children = this.props.children;
 		if(conf && conf.isBubble == false){
 			
 		}else{
 			this._walkAndBindParent();
 		}
-		this.htmlProps = this.htmlProps || {};
-		Object.assign(this.htmlProps, this.props);
+		if(!this.htmlProps){
+			this.htmlProps = this.htmlProps || {};
+			Object.assign(this.htmlProps, this.props);
+		}
 		/**
 		 * reset Event Array
 		 */
@@ -257,17 +262,30 @@ class Element extends React.Component {
 		/**
 		 * 默认字体使用rem
 		 */
-		this.defaultStyle = this.defaultStyle || {};
-		this.htmlProps.style = Object.assign({
-			fontSize: window.STYLESHEET.remUnit
-		}, this.defaultStyle);
-		this.htmlProps.className = [];
+
+		if(!this.htmlProps.style){
+			this.defaultStyle = this.defaultStyle || {};
+			this.htmlProps.style = Object.assign({
+				fontSize: window.STYLESHEET.remUnit
+			}, this.defaultStyle);
+		}
 		//这边是css权重算法
-		if(this.props.className) {
-			var a = this.props.className.split(/\s+/);
-			this.htmlProps.className = a.slice();
+		if(this.htmlProps.className && !this.classList) {
+			var a = this.htmlProps.className.split(/\s+/);
+			this.classList = a;
+		}
+		if(this.classList == null || this.classList.length == 0){
+			this.htmlProps.style = Object.assign({
+				fontSize: window.STYLESHEET.remUnit
+			}, this.defaultStyle);
+		}
+		if(this.classList && this.classList.length){
+			this.state.className = this.classList.join(' ');
 			var self = this;
-			a.forEach(function(i){
+			this.classList.forEach(function(i){
+				/**
+				 * 加入className tree
+				 */
 				DOMTREE_BYCLASS[i] = DOMTREE_BYCLASS[i] || [];
 				if(DOMTREE_BYCLASS[i].indexOf(self) == -1){
 					DOMTREE_BYCLASS[i].push(self);
@@ -286,7 +304,7 @@ class Element extends React.Component {
 						maxLoop--;
 						var cur = css[css.length -1];
 						if(/^\./.test(cur)){
-							if(par.htmlProps.className.indexOf(cur.substring(1)) > -1){
+							if(par.classList.indexOf(cur.substring(1)) > -1){
 								css.pop();
 								if(css.length == 0){
 									find = true;
@@ -318,29 +336,32 @@ class Element extends React.Component {
 				}
 			});
 		}
-		var allEnumClass = allEnum(this.htmlProps.className);
-		function allEnum(a){
-			var re = [];
-			for(var i = 0; i < a.length; i++){
-				o(i, a, re, a[i]);
-				function o(start, array, re, prefix){
-					for(var j = start + 1; j < array.length; j++){
-						var newK = '.' + prefix.toString() + '.' + array[j].toString();
-						re.push(newK);
-						o(j, array, re, newK);
+		if(this.classList){
+			var allEnumClass = allEnum(this.classList);
+			function allEnum(a){
+				var re = [];
+				for(var i = 0; i < a.length; i++){
+					o(i, a, re, a[i]);
+					function o(start, array, re, prefix){
+						for(var j = start + 1; j < array.length; j++){
+							var newK = '.' + prefix.toString() + '.' + array[j].toString();
+							re.push(newK);
+							o(j, array, re, newK);
+						}
 					}
 				}
+				return re;
 			}
-			return re;
+			/**
+			 * 我觉得这里面还是有问题的，我们应该实现一个linkedHashMap保持原来的css的插入顺序才可以，现在这样的权重还是有点问题
+			 */
+			allEnumClass.forEach(function(item){
+				if(STYLESHEET.sheets[item]){
+					Object.assign(self.htmlProps.style, STYLESHEET.sheets[item]);
+				}
+			})
+			
 		}
-		/**
-		 * 我觉得这里面还是有问题的，我们应该实现一个linkedHashMap保持原来的css的插入顺序才可以，现在这样的权重还是有点问题
-		 */
-		allEnumClass.forEach(function(item){
-			if(STYLESHEET.sheets[item]){
-				Object.assign(self.htmlProps.style, STYLESHEET.sheets[item]);
-			}
-		})
 		if(this.props.id){
 			DOMTREE_BYID[this.props.id] = this;
 			/**
@@ -348,11 +369,15 @@ class Element extends React.Component {
 			 */
 			Object.assign(self.htmlProps.style, STYLESHEET.sheets['#' + this.props.id]);
 		}
+		
 		/**
 		 * 直接赋值的样式权重最大
 		 */
-		if(this.props.style){
-			Object.assign(this.htmlProps.style, this.props.style);
+		if(this.props.style && !this.state.inlineStyle){
+			this.state.inlineStyle = this.props.style;
+		}
+		if(this.state.inlineStyle){
+			Object.assign(this.htmlProps.style, this.state.inlineStyle);
 		}
 		if(this.htmlProps.style) {
 			this.htmlProps.style = htmlCssParser.parse(this.htmlProps.style, this.tagName());
@@ -375,8 +400,78 @@ class Element extends React.Component {
 	        });
 		});
 	}
-	addClass(){
-		
+	/**
+	 * class
+	 */
+	addClass(cls){
+		this.classList = this.classList || [];
+		var idx = this.classList.indexOf(cls);
+		if(idx > -1){
+			this.classList.splice(idx, 1);
+		}
+		this.classList.push(cls);
+		this.setState({
+			className: this.classList.join(' ')
+		});
+	}
+	removeClass(cls){
+		this.classList = this.classList || [];
+		var idx = this.classList.indexOf(cls);
+		if(idx > -1){
+			this.classList.splice(idx, 1);
+			this.setState({
+				className: this.classList.join(' ')
+			});
+		}
+	}
+	hasClass(cls){
+		this.classList = this.classList || [];
+		var idx = this.classList.indexOf(cls);
+		if(idx > -1){
+			return true;
+		}
+		return false;
+	}
+	css(o){
+		if(o){
+			this.setState({
+				inlineStyle : o
+			});
+		}else{
+			return this.htmlProps.style;
+		}
+	}
+	/**
+	 * dom
+	 */
+	html(o){
+		if(o){
+			this.setState({
+				children: o
+			})
+		}else{
+			return this.state.children;
+		}
+	}
+	attr(k, v){
+		if(arguments.length ==2){
+			this.htmlProps[k] = v;
+			this.render();
+		}else if(arguments.length == 1){
+			return this.htmlProps[k];
+		}
+	}
+	append(o){
+		var children = this.state.children.slice(0).concat([o]);
+		this.setState({
+			children: children
+		})
+	}
+	before(o){
+		var children = [o].concat(this.state.children.slice(0));
+		this.setState({
+			children: children
+		})
 	}
 }
 
