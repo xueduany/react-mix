@@ -16,13 +16,13 @@ Both support ReactNative Android and IOS, more UI component is still in dev!
 
 We promise , we do not change any react-native core code, we only do auto translate tools!
 
-## Have Suuport CSS Function
+## Have Support CSS Function
 - className
 - css unit, px , pt, em , rem
 - #id
 - .className
 - TagName
-- .className combin, like .a.b.c
+- .className combine, like .a.b.c
 - .className inherit like .a .b .c
 
 ## Have Support JQuery API
@@ -39,7 +39,7 @@ We promise , we do not change any react-native core code, we only do auto transl
 - parent, because we simulate a DOM tree
 
 ## Have Support LocalStorage
-- API like webbrowser localstorage, example see ./reactnative/example_localstorage.js
+- API like web browser localstorage, example see ./reactnative/example_localstorage.js
 
 ## Have Support Animation API
 - requestAnimationFrame
