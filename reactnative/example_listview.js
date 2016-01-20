@@ -14,46 +14,28 @@ class vsIndex extends Element {
 	<Div id="J-block-test" className="j-j_j i_i-i">测试水平居中垂直居中</Div>
 	
 	<SimpleListView className="listPage-listView iiii" dataSource={this.state.dataSource}
-	renderRow={this._renderRow.bind(this)}></SimpleListView>
+	renderRow={this._renderRow}></SimpleListView>
 </Div>
 
 		);
 	}
 	componentDidMount(){
 		var self = this;
-		var url = 'http://statics1.jiaru.club/react-native-example/list.js';
-		console.debug(url)
-		setTimeout(function(){
-			fetch(url,
-					{method:'get',headers:{'Content-Type':'application/json;charset=utf-8',
-						'Accept':'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
-						'Accept-Encoding':'gzip, deflate, sdch',
-						'Accept-Language':'zh-CN,zh;q=0.8,en;q=0.6',
-						
-						'Host':'statics1.jiaru.club'
-						},
-				//body: [''].join('')
-					}
-			).then(function(req){
-				req.json().then(function(res){
-					var l = res.list.slice(0);
-
-					for(var i=0;i<2;i++){
-						console.debug(l);
-						l = l.concat(l)
-					}
-					console.debug(l)
-					var o = self.state.dataSource.cloneWithRows(l);
-					self.setState({
-						dataSource: o
-				    });
-				})
+		fetch('http://statics1.jiaru.club/react-native-example/list.js',
+				{method:'get',headers:{'Content-Type':'application/json;charset=utf-8'},
+			//body: [''].join('')
+				}
+		).then(function(req){
+			req.json().then(function(res){
+				var o = self.state.dataSource.cloneWithRows(res.list);
+				self.setState({
+					dataSource: o
+			    });
 			})
-		}, 0);
-		
+		})
 	}
 	_renderRow(row, sid, rowid){
-		return <Row data={arguments}/>;
+		return <Row data={arguments} jumpFn={this.jumpFn}/>;
 	}
 }
 class Row extends Element{
@@ -64,7 +46,6 @@ class Row extends Element{
 		}
 	}
 	render(){
-		try{
 		var row = this.props.data[0];
 		var rowid = this.props.data[2];
 		return (
@@ -86,9 +67,6 @@ class Row extends Element{
 		</Div>
 	</Div>
 		);
-		}catch(e){
-			console.debug(e);
-		}
 	}
 	collapse(){
 		if(this.state.numberOfLines == 3){

@@ -4,4 +4,4 @@
 import './common/LightningStorm';
 
 
-import './index.js';
+import './demo.js';

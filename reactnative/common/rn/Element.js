@@ -120,12 +120,14 @@ class Element extends React.Component {
 		}
 	}
 	componentWillMount(){
-		
+		super.componentWillMount && super.componentWillMount();
 	}
 	componentDidMount(){
+		super.componentDidMount && super.componentDidMount();
 		this.handleEvent.call(this, {type: 'load'});
 	}
 	componentWillUnmount() {
+		super.componentWillUnmount && super.componentWillUnmount();
 		//this.eventHandle = null;
 		TimerMixin.componentWillUnmount.call(this);
 		if(this.props.id){
@@ -304,7 +306,7 @@ class Element extends React.Component {
 						maxLoop--;
 						var cur = css[css.length -1];
 						if(/^\./.test(cur)){
-							if(par.classList.indexOf(cur.substring(1)) > -1){
+							if(par.classList && par.classList.indexOf(cur.substring(1)) > -1){
 								css.pop();
 								if(css.length == 0){
 									find = true;
