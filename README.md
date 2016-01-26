@@ -12,6 +12,8 @@ React Mix enables you to build all platform application base on React-Native. We
 - support ReactNative Bundle into two part, not single release, one is like common part, include nessesary component, bigger one, another is business code, smaller.(done, read react-native.js.split.build.js)
 - and more...
 
+- add a big game demo 2048 , can both run  iOS/Android/H5 , more detail see sourcecode
+
 Both support ReactNative Android and IOS, more UI component is still in dev!
 
 We promise , we do not change any react-native core code, we only do auto translate tools!
@@ -62,6 +64,8 @@ We promise , we do not change any react-native core code, we only do auto transl
 - 支持常用的js dom event api，支持例如onclick
 - 支持常用的dom操作api，比如insertBefore, html等等，你经常使用的api
 - 支持ReactNative代码的分割打包，这样你可以把reactnative的框架代码保存在app本地，但是业务代码通过在线直连的方法更新，保证网络传输量最小
+
+- 添加游戏2048的例子，现在启动默认进入2048,如果要修改其他例子，请修改index.ios.js的引用指向, 安卓修改index.android.js
 
 而且我们是基于自动化脚本动态翻译的方式，使得现有的HTML+CSS+JS的代码可以无修改的直接转换成为reactnative代码，且一套不需要修改的代码，直接在iOS,andorid,winphone,H5,PC平台实现展现完全一致
 
