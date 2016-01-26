@@ -1,6 +1,7 @@
 class Element extends React.Component {
 	constructor(){
 		super();
+		this.state = this.state || {};
 		this.setTimeout = TimerMixin.setTimeout;
 		this.clearTimeout = TimerMixin.clearTimeout;
 		this.setInterval = TimerMixin.setInterval;

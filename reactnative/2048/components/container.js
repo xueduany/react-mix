@@ -20,22 +20,22 @@ class Container extends Element{
 		this.setup();
         this.moving = false;
 	}
-	_handlePanResponderGrant(e: Object, gestureState: Object) {
+	_handlePanResponderGrant(e: Object) {
 		if(this.moving==false){
 			this.moving = true;
 			this.touchStartState = {
-					pageX: e.pageX,
-					pageY: e.pageY
+					pageX: e.changedTouches[0].pageX,
+					pageY: e.changedTouches[0].pageY
 			}
 		}
 	}
-	_handlePanResponderEnd(e: Object, gestureState: Object) {
+	_handlePanResponderEnd(e: Object) {
 		console.debug(arguments)
         if(this.moving && this.touchStartState != null){
             this.moving = false;
        
-            var dx = e.pageX - this.touchStartState.pageX;
-            var dy = e.pageY - this.touchStartState.pageY;
+            var dx = e.changedTouches[0].pageX - this.touchStartState.pageX;
+            var dy = e.changedTouches[0].pageY - this.touchStartState.pageY;
             var absDx = dx>0?dx:-dx;
             var absDy = dy>0?dy:-dy;
             var canMove = absDx>absDy?absDx-absDy>10:absDx-absDy<-10;
@@ -95,8 +95,8 @@ class Container extends Element{
 	    return this.over || (this.won && !this.keepPlaying);
 	}
 	// Set up the game
-	setup() {
-	    var previousState = storageManager.getGameState();
+	async setup() {
+	    var previousState = await storageManager.getGameState();
 
 	    // Reload the game from a previous game if present
 	    if (previousState) {
@@ -112,7 +112,7 @@ class Container extends Element{
 	      this.won         = false;
 	      this.keepPlaying = false;
 	    }
-	    this.setState({score: this.score, best: parseInt(storageManager.getBestScore()), tiles: this.getRandomTiles(), over: this.over, won: this.won});
+	    this.setState({score: this.score, best: parseInt(await storageManager.getBestScore()), tiles: this.getRandomTiles(), over: this.over, won: this.won});
 	}
 	// Set up the initial tiles to start the game with
 	addStartTiles() {
@@ -132,12 +132,12 @@ class Container extends Element{
 	    }
 	}
 	// Sends the updated grid to the actuator
-	actuate() {
+	async actuate() {
 	    // Clear the state when the game is over (game over only, not win)
 	    if (this.over) {
-	      storageManager.clearGameState();
+	    	await storageManager.clearGameState();
 	    } else {
-	      storageManager.setGameState(this.serialize());
+	    	await storageManager.setGameState(this.serialize());
 	    }
 
 	    // this.actuator.actuate(this.grid, {
@@ -150,25 +150,25 @@ class Container extends Element{
 
 	    var tiles = [];
 	    this.grid.cells.forEach(function (column) {
-	      column.forEach(function (cell) {
-	        if (cell) {
-	          tiles.push({
-	            x: cell.x,
-	            y: cell.y,
-	            value: cell.value,
-	            prog: cell.prog
-	          });
-	        }
-	      });
+	    	column.forEach(function (cell) {
+	    		if (cell) {
+	    			tiles.push({
+	    				x: cell.x,
+	    				y: cell.y,
+	    				value: cell.value,
+	    				prog: cell.prog
+	    			});
+	    		}
+	    	});
 	    });
 	      
 	    var bestScore = parseInt(storageManager.getBestScore());
 	    if (bestScore < this.score) {
-	      storageManager.setBestScore(this.score);   
-	      this.setState({score: this.score, best: this.score, tiles: tiles, won: this.won, over:this.over});
+	    	await storageManager.setBestScore(this.score);   
+	    	this.setState({score: this.score, best: this.score, tiles: tiles, won: this.won, over:this.over});
 	    }
 	    else {
-	      this.setState({score: this.score, tiles: tiles, won: this.won, over:this.over});
+	    	this.setState({score: this.score, tiles: tiles, won: this.won, over:this.over});
 	    }
 	}
 	// Represent the current game as an object

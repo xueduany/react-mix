@@ -11,12 +11,13 @@ class Tile extends Element {
             height:ITEM_WIDTH
         }
         var tileTextStyle = this.props.value<= 2048 ? styles['tile' + this.props.value+"Text"] : styles["tilesuperText"];
+        
         var tileTextLineStyle = {
-            lineHeight:parseInt(ITEM_WIDTH)
+            lineHeight:parseInt(ITEM_WIDTH)+'pt'
         }
         return (
-        	<Div style={[ styles.tile,tileStyle,tilePositionStyle]}>
-                <Span style={[ styles.tileText,tileTextStyle,tileTextLineStyle]}>{ this.props.value }</Span>
+        	<Div style={Object.assign({},styles.tile,tileStyle,tilePositionStyle)}>
+                <Span style={Object.assign({}, styles.tileText,tileTextStyle,tileTextLineStyle)}>{ this.props.value }</Span>
             </Div>
         );
     }

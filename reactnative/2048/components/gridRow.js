@@ -13,6 +13,7 @@ class GridRow extends Element{
         
 var styles = {
     container:{
+    	display: 'flex',
         height:(windowWidth-40-50)/4,
         flexDirection:"row"
     }

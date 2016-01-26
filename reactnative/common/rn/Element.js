@@ -382,6 +382,7 @@ class Element extends React.Component {
 		 * 直接赋值的样式权重最大
 		 */
 		if(this.props.style){
+			/*
 			if(this.props.style!= null && '0' in this.props.style){
 				var re = {};
 				for(var k in this.props.style){
@@ -391,6 +392,8 @@ class Element extends React.Component {
 			}else{
 				this.state.inlineStyle = this.props.style;
 			}
+			*/
+			this.state.inlineStyle = this.props.style;
 		}
 		if(this.state.inlineStyle){
 			Object.assign(this.htmlProps.style, this.state.inlineStyle);

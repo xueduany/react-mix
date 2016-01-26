@@ -19,6 +19,7 @@ class GameContainer extends Element{
         
 var styles = {
     container:{
+    	position: 'relative',
         width:windowWidth-40,
         height:windowWidth-40,
         backgroundColor:"#bbada0",

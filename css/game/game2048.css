@@ -3,6 +3,7 @@
 }
 
 .heading {
+	display: flex;
 	height: 80pt;
 	margin-top: 40pt;
 	flex-direction: row;
@@ -13,6 +14,7 @@
 	font-weight: bold;
 }
 .heading .scores {
+	display: flex;
 	flex: 1;
 	flex-direction: row;
 	justify-content: flex-end;
@@ -20,6 +22,7 @@
 	align-items: flex-start;
 }
 .heading .container {
+	display: flex;
 	background-color: #bbada0;
 	padding-left: 15pt;
 	padding-right: 15pt;
@@ -44,11 +47,13 @@
 }
 
 .abovegame {
+	display: flex;
 	flex-direction: row;
 	flex-wrap: nowrap;
 	margin-top: 5pt;
 }
 .abovegame .textContainer {
+	display: flex;
 	flex: 1;
 	margin-right: 10pt;
 }

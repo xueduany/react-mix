@@ -5,7 +5,7 @@ class TileContainer extends Element {
         var children = this.props.tiles;
         return(<Div style={styles.container}>
                         {
-                            children.map(function(item){
+                        	children && children.map(function(item){
                                 return (<Tile x={item.x} y={item.y} value={item.value} key={item.prog}/>)
                             })
                         }

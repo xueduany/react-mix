@@ -25,7 +25,7 @@ class GameMessage extends Element{
     render(){
         var message = this.genMessage();
         var containerStyle = (this.props.won || this.props.over) ? {width:windowWidth-40,height:windowWidth-40} : {width:0,height:0};
-        return(<Div style={[styles.container,containerStyle]}>
+        return(<Div style={Object.assign({},styles.container,containerStyle)}>
                     {message}
                 </Div>)
     }

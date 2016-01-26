@@ -1,7 +1,7 @@
 var LocalStorageManager = function() {
     this.bestScoreKey = "bestScore";
     this.gameStateKey = "gameState";
-    this.storage = AsyncStorage;
+    this.storage = localStorage;
 }
 
 LocalStorageManager.prototype.getItem = async function(key){
@@ -34,26 +34,25 @@ LocalStorageManager.prototype.removeItem = async function(key){
 }
 
 // Best score getters/setters
-LocalStorageManager.prototype.getBestScore = function () {
-	return this.getItem(this.bestScoreKey).done() || 0;
+LocalStorageManager.prototype.getBestScore = async function () {
+	return await this.getItem(this.bestScoreKey) || 0;
 };
-LocalStorageManager.prototype.setBestScore = function (score) {
-    
-	this.setItem(this.bestScoreKey, score.toString()).done();
+LocalStorageManager.prototype.setBestScore = async function (score) {
+	await this.setItem(this.bestScoreKey, score.toString());
 };
 
 // Game state getters/setters and clearing
-LocalStorageManager.prototype.getGameState = function () {
-	var state = this.getItem(this.gameStateKey).done();
+LocalStorageManager.prototype.getGameState = async function () {
+	var state = await this.getItem(this.gameStateKey);
 	return state?JSON.parse(state):null;
 };
 
-LocalStorageManager.prototype.setGameState = function (gameState) {
+LocalStorageManager.prototype.setGameState = async function(gameState) {
 	var json = gameState?JSON.stringify(gameState):null;
-	this.setItem(this.gameStateKey,json).done();
+	await this.setItem(this.gameStateKey,json);
 };
-LocalStorageManager.prototype.clearGameState = function () {
-	this.removeItem(this.gameStateKey).done();
+LocalStorageManager.prototype.clearGameState = async function () {
+	await this.removeItem(this.gameStateKey);
 };
 
 module.exports = LocalStorageManager;
