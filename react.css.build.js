@@ -1,12 +1,14 @@
 var fs = require('fs');
 var nativeCSS = require('./native-css');
+var mkdirp = require('mkdirp');
+
 
 var fileList = [];
 function walk(path) {  
 	var dirList = fs.readdirSync(path);  
 	dirList.forEach(function(item) {  
 	    if (fs.statSync(path + '/' + item).isDirectory()) {  
-	        walk(path + '/' + item);  
+	        walk(path + '/' + item + '/');  
 	    } else {  
 	        fileList.push(path + item);  
 	    }  
@@ -47,6 +49,9 @@ function watch(){
 function transformCSS(fileName){
 	var cssObject = nativeCSS.convert(fileName);
 	var newFileName = fileName.replace('/css/','/reactnative/css/').replace(/\.css$/,'.js');
+	console.log(newFileName);
+	var dir = newFileName.match(/(\..+\/)/)[0];
+	mkdirp.sync(dir);
 	console.log('build '+newFileName);
 	nativeCSS.generateFile(cssObject, newFileName, false);
 }

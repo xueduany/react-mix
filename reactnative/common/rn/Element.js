@@ -247,8 +247,14 @@ class Element extends React.Component {
 		}
 		if(!this.htmlProps){
 			this.htmlProps = this.htmlProps || {};
-			Object.assign(this.htmlProps, this.props);
+			for(var k in this.props){
+				if(k!='style'){
+					this.htmlProps[k] = this.props[k];
+				}
+			}
+			//Object.assign(this.htmlProps, this.props);
 		}
+		
 		/**
 		 * reset Event Array
 		 */
@@ -375,8 +381,16 @@ class Element extends React.Component {
 		/**
 		 * 直接赋值的样式权重最大
 		 */
-		if(this.props.style && !this.state.inlineStyle){
-			this.state.inlineStyle = this.props.style;
+		if(this.props.style){
+			if(this.props.style!= null && '0' in this.props.style){
+				var re = {};
+				for(var k in this.props.style){
+					Object.assign(re, this.props.style[k]);
+				}
+				this.state.inlineStyle = re;
+			}else{
+				this.state.inlineStyle = this.props.style;
+			}
 		}
 		if(this.state.inlineStyle){
 			Object.assign(this.htmlProps.style, this.state.inlineStyle);

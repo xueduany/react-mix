@@ -46,6 +46,8 @@ if(isNative) {
 	window.TouchableOpacity = React.TouchableOpacity;
 	window.TouchableWithoutFeedback = React.TouchableWithoutFeedback;
 	window.TextInput = React.TextInput;
+	window.AsyncStorage = require('AsyncStorage');
+	//
 	window.Input = require('./rn/Input');
 	window.Div = require('./rn/Div');
 	window.Body = require('./rn/Body');

@@ -1,0 +1,67 @@
+.container {
+	padding: 0 20pt;
+}
+
+.heading {
+	height: 80pt;
+	margin-top: 40pt;
+	flex-direction: row;
+}
+.heading .heading-title {
+	font-size: 48pt;
+	color: #776E65;
+	font-weight: bold;
+}
+.heading .scores {
+	flex: 1;
+	flex-direction: row;
+	justify-content: flex-end;
+	flex-wrap: wrap;
+	align-items: flex-start;
+}
+.heading .container {
+	background-color: #bbada0;
+	padding-left: 15pt;
+	padding-right: 15pt;
+	padding-top: 5pt;
+	padding-bottom: 5pt;
+	border-radius: 3pt;
+	margin-left: 5pt;
+	flex-direction: column;
+	align-items: center;
+}
+.heading .container-title {
+	color: #eee4da;
+	text-align: center;
+	font-weight: bold;
+	font-size: 12pt;
+}
+.heading .container-value {
+	color: #fff;
+	text-align: center;
+	font-size: 24pt;
+	font-weight: bold;
+}
+
+.abovegame {
+	flex-direction: row;
+	flex-wrap: nowrap;
+	margin-top: 5pt;
+}
+.abovegame .textContainer {
+	flex: 1;
+	margin-right: 10pt;
+}
+.abovegame .text {
+	color: #776E65;
+	font-size: 16pt;
+	line-height: 26pt;
+}
+.abovegame .boldText {
+	font-weight: bold;
+}
+.abovegame .newGameContainer {
+	background-color: #8f7a66;
+	padding: 15pt 10pt;
+	border-radius: 3pt;
+}
