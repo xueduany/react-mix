@@ -7,10 +7,11 @@ class vsIndex extends Element {
 			dataSource: SimpleListView.initDataSource(),
 		}
 	}
+
 	render() {
 		return (
 <Div style={{height: windowHeight}}>
-	<Header title="维多利亚的秘密" leftButton={null}></Header>
+	<Header id="HH" title="维多利亚的秘密" leftButton={null}></Header>
 	<Div id="J-block-test" className="j-j_j i_i-i">测试水平居中垂直居中</Div>
 	
 	<SimpleListView className="listPage-listView iiii" dataSource={this.state.dataSource}
@@ -39,16 +40,33 @@ class vsIndex extends Element {
 					var l = res.list.slice(0);
 
 					for(var i=0;i<2;i++){
-						console.debug(l);
 						l = l.concat(l)
 					}
-					console.debug(l)
 					var o = self.state.dataSource.cloneWithRows(l);
 					self.setState({
 						dataSource: o
 				    });
 				})
 			})
+			
+			
+			//
+			console.debug($('#HH'))
+			setTimeout(function(){
+				$('#HH').animate({
+					from: {
+						top: 0,
+						left: 0,
+						position: 'relative'
+					},
+					to: {
+						top: 0,
+						left: 100
+					},
+					duration: 1000
+				})
+			},2000)
+		
 		}, 0);
 		
 	}

@@ -4,4 +4,4 @@
 import './common/LightningStorm';
 
 
-import './2048/game.js';
+import './index.js';

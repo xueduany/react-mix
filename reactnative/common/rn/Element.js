@@ -271,9 +271,9 @@ class Element extends React.Component {
 		 * 默认字体使用rem
 		 */
 
-		if(!this.htmlProps.style){
+		if(!this.htmlProps._css){
 			this.defaultStyle = this.defaultStyle || {};
-			this.htmlProps.style = Object.assign({
+			this.htmlProps._css = Object.assign({
 				fontSize: window.STYLESHEET.remUnit
 			}, this.defaultStyle);
 		}
@@ -283,7 +283,7 @@ class Element extends React.Component {
 			this.classList = a;
 		}
 		if(this.classList == null || this.classList.length == 0){
-			this.htmlProps.style = Object.assign({
+			this.htmlProps._css = Object.assign({
 				fontSize: window.STYLESHEET.remUnit
 			}, this.defaultStyle);
 		}
@@ -301,7 +301,7 @@ class Element extends React.Component {
 				/**
 				 * 开始对于className的继承的处理
 				 */
-				Object.assign(self.htmlProps.style, STYLESHEET.sheets['.' + i]);
+				Object.assign(self.htmlProps._css, STYLESHEET.sheets['.' + i]);
 				if(STYLESHEET.sheets['+.' + i]){
 					var css = STYLESHEET.sheets['+.' + i].inherit.slice();
 					var find = false;
@@ -339,7 +339,7 @@ class Element extends React.Component {
 						}
 					}
 					if(find){
-						Object.assign(self.htmlProps.style, STYLESHEET.sheets['+.' + i].css);
+						Object.assign(self.htmlProps._css, STYLESHEET.sheets['+.' + i].css);
 					}
 				}
 			});
@@ -365,7 +365,7 @@ class Element extends React.Component {
 			 */
 			allEnumClass.forEach(function(item){
 				if(STYLESHEET.sheets[item]){
-					Object.assign(self.htmlProps.style, STYLESHEET.sheets[item]);
+					Object.assign(self.htmlProps._css, STYLESHEET.sheets[item]);
 				}
 			})
 			
@@ -375,13 +375,13 @@ class Element extends React.Component {
 			/**
 			 * 权重id的权重大于className
 			 */
-			Object.assign(self.htmlProps.style, STYLESHEET.sheets['#' + this.props.id]);
+			Object.assign(self.htmlProps._css, STYLESHEET.sheets['#' + this.props.id]);
 		}
 		
 		/**
 		 * 直接赋值的样式权重最大
 		 */
-		if(this.props.style){
+		if(!this.state.inlineStyle){
 			/*
 			if(this.props.style!= null && '0' in this.props.style){
 				var re = {};
@@ -396,10 +396,10 @@ class Element extends React.Component {
 			this.state.inlineStyle = this.props.style;
 		}
 		if(this.state.inlineStyle){
-			Object.assign(this.htmlProps.style, this.state.inlineStyle);
+			Object.assign(this.htmlProps._css, this.state.inlineStyle);
 		}
-		if(this.htmlProps.style) {
-			this.htmlProps.style = htmlCssParser.parse(this.htmlProps.style, this.tagName());
+		if(this.htmlProps._css) {
+			this.htmlProps.style = htmlCssParser.parse(this.htmlProps._css, this.tagName());
 		}
 	}
 	/**
@@ -451,13 +451,21 @@ class Element extends React.Component {
 		}
 		return false;
 	}
-	css(o){
-		if(o){
-			this.setState({
-				inlineStyle : o
-			});
-		}else{
-			return this.htmlProps.style;
+	css(styleName, styleValue){
+		if(arguments.length == 0){
+			return this.htmlProps._css;
+		}else if(arguments.length == 1){
+			if(({}).toString.call(styleName) == '[object String]'){
+				return this.htmlProps._css[styleName];
+			}else{
+				var newInlineStyle = Object.assign({}, this.state.inlineStyle, styleName);
+				this.setState({inlineStyle: newInlineStyle});
+			}
+		}else if(arguments.length == 2){
+			var t = {};
+			t[styleName] = styleValue;
+			var newInlineStyle = Object.assign({}, this.state.inlineStyle, t);
+			this.setState({inlineStyle: newInlineStyle});
 		}
 	}
 	/**
@@ -497,6 +505,9 @@ class Element extends React.Component {
 	}
 	off(eventType, fn){
 		this.removeEventListener(eventType, fn);
+	}
+	animate(config){
+		animation.motion(Object.assign(config, {el: this}));
 	}
 }
 

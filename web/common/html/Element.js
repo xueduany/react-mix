@@ -104,12 +104,14 @@ class Element extends React.Component {
 		}
 		return false;
 	}
-	css(o){
+	css(styleName, styleValue){
 		var el = React.findDOMNode(this);
-		if(o){
-			for(var k in o){
-				el[k] = o[k];
+		if(arguments.length == 1){
+			for(var k in styleName){
+				el.style[k] = styleName[k];
 			}
+		}else if(arguments.length == 2){
+			el.style[styleName] = styleValue;
 		}else{
 			return getComputedStyle(o);
 		}
@@ -156,6 +158,9 @@ class Element extends React.Component {
 	off(eventType, fn){
 		var el = React.findDOMNode(this);
 		el.removeEventListener(eventType, fn);
+	}
+	animate(config){
+		animation.motion(Object.assign(config, {el: this}));
 	}
 }
 module.exports = Element;

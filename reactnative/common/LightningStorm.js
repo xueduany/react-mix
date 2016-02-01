@@ -68,12 +68,10 @@ if(isNative) {
 	window.ScrollView = React.ScrollView;
 	//
 	window.localStorage = require('./LocalStorage');
-	window.StateStore = require('./StateStore');
 	window.htmlCssParser = require('./rn/HtmlCssParser');
 
 }else{
 	//这里是ui.js
-	window.StateStore = require('./StateStore');
 	window.STYLESHEET = new StyleSheet();
 }
 window.App = require('./App');
@@ -95,6 +93,8 @@ window.TemplateFill = function(){
 	return newT;
 }
 
+window.Animation = require('./Animation');
+window.animation = new Animation();
 
 //UI Component
 if(isNative){

@@ -196,7 +196,6 @@ var ListView = React.createClass({
   },
 
   render: function() {
-	  console.debug(1);
     var bodyComponents = [];
 
     var dataSource = this.props.dataSource;

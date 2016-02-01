@@ -31,7 +31,7 @@ class Header extends Element {
 		this.compatHTML();
 		var self = this;
 		return (
-				<Div className="native-header">
+				<Div id={this.props.id} className="native-header">
 					<Div className="native-header-box">
 						<Div className="native-header-title">{self.state.title}</Div>
 						{
