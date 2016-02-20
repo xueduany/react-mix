@@ -5,7 +5,7 @@ class A extends Element {
 		return (
 				<TouchableOpacity {...this.props} onPress = { this.props.onPress || this.props.onClick }>
 			      <Text
-			        style={defaultCss.button}>{this.props.children}</Text>
+			        >{this.props.children}</Text>
 			    </TouchableOpacity>
 		);
 	}

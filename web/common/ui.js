@@ -9,6 +9,7 @@ window.ListView = require('./html/ListView');
 window.Img = require('./html/Img');
 window.SimpleListView = require('./html/SimpleListView');
 window.Header = require('./html/Header');
+window.A = require('./html/A');
 //
 window.Body = window.Div;
 window.TabSlider = require('./html/TabSlider');

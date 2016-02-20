@@ -62,6 +62,8 @@ class Element extends React.Component {
 			if(node && node._store){
 				try{
 					node._store.parentNode = self;
+
+					node._store.inheritStyle = htmlCssParser.canInherit(self.htmlProps._css);
 				}catch(e){
 					console.debug(e);
 				}
@@ -76,6 +78,15 @@ class Element extends React.Component {
 			}
 		}
 		return null;
+	}
+	getInheritStyle(){
+		if(this._reactInternalInstance && this._reactInternalInstance._currentElement){
+			var o =this._reactInternalInstance._currentElement;
+			if(o && o._store && o._store.inheritStyle){
+				return o._store.inheritStyle; 
+			}
+		}
+		return {};
 	}
 	tagName(){
 		return this.constructor.toString().match(/function (\w+)\(\)/)[1];
@@ -240,11 +251,7 @@ class Element extends React.Component {
 		var self = this;
 		self.state = self.state || {};
 		self.state.children = this.props.children;
-		if(conf && conf.isBubble == false){
-			
-		}else{
-			this._walkAndBindParent();
-		}
+		
 		if(!this.htmlProps){
 			this.htmlProps = this.htmlProps || {};
 			for(var k in this.props){
@@ -270,23 +277,21 @@ class Element extends React.Component {
 		/**
 		 * 默认字体使用rem
 		 */
-
+		
 		if(!this.htmlProps._css){
 			this.defaultStyle = this.defaultStyle || {};
 			this.htmlProps._css = Object.assign({
 				fontSize: window.STYLESHEET.remUnit
-			}, this.defaultStyle);
+			}, this.defaultStyle, this.getInheritStyle());
 		}
 		//这边是css权重算法
 		if(this.htmlProps.className && !this.classList) {
 			var a = this.htmlProps.className.split(/\s+/);
 			this.classList = a;
 		}
-		if(this.classList == null || this.classList.length == 0){
-			this.htmlProps._css = Object.assign({
-				fontSize: window.STYLESHEET.remUnit
-			}, this.defaultStyle);
-		}
+
+
+		
 		if(this.classList && this.classList.length){
 			this.state.className = this.classList.join(' ');
 			var self = this;
@@ -302,48 +307,53 @@ class Element extends React.Component {
 				 * 开始对于className的继承的处理
 				 */
 				Object.assign(self.htmlProps._css, STYLESHEET.sheets['.' + i]);
-				if(STYLESHEET.sheets['+.' + i]){
-					var css = STYLESHEET.sheets['+.' + i].inherit.slice();
-					var find = false;
-					var par = self;
-					var maxLoop = 999;
+				
+				if(STYLESHEET.sheets['+.' + i] && STYLESHEET.sheets['+.' + i].length){
+					for(var j = 0; j < STYLESHEET.sheets['+.' + i].length; j++){
+						var css = STYLESHEET.sheets['+.' + i][j].inherit.slice();
+						var find = false;
+						var par = self;
+						var maxLoop = 999;
 
-					while(css.length && (par = par.parentNode()) && (maxLoop> 0)){
-						maxLoop--;
-						var cur = css[css.length -1];
-						if(/^\./.test(cur)){
-							if(par.classList && par.classList.indexOf(cur.substring(1)) > -1){
-								css.pop();
-								if(css.length == 0){
-									find = true;
-									break;
+						while(css.length && (par = par.parentNode()) && (maxLoop> 0)){
+							maxLoop--;
+							var cur = css[css.length -1];
+							if(/^\./.test(cur)){
+								if(par.classList && par.classList.indexOf(cur.substring(1)) > -1){
+									css.pop();
+									if(css.length == 0){
+										find = true;
+										break;
+									}
 								}
-							}
-						}else if(/^#/.test(cur)){
+							}else if(/^#/.test(cur)){
 
-							if(par.props.id == cur.substring(1)){
-								css.pop();
-								if(css.length == 0){
-									find = true;
-									break;
+								if(par.props.id == cur.substring(1)){
+									css.pop();
+									if(css.length == 0){
+										find = true;
+										break;
+									}
 								}
-							}
-						}else if(/^[A-Z]/.test(cur)){
-							if(par.tagName() == cur){
-								css.pop();
-								if(css.length == 0){
-									find = true;
-									break;
+							}else if(/^[A-Z]/.test(cur)){
+								if(par.tagName() == cur){
+									css.pop();
+									if(css.length == 0){
+										find = true;
+										break;
+									}
 								}
 							}
 						}
+						if(find){
+							Object.assign(self.htmlProps._css, STYLESHEET.sheets['+.' + i][j].css);
+						}
 					}
-					if(find){
-						Object.assign(self.htmlProps._css, STYLESHEET.sheets['+.' + i].css);
-					}
+					
 				}
 			});
 		}
+
 		if(this.classList){
 			var allEnumClass = allEnum(this.classList);
 			function allEnum(a){
@@ -377,7 +387,7 @@ class Element extends React.Component {
 			 */
 			Object.assign(self.htmlProps._css, STYLESHEET.sheets['#' + this.props.id]);
 		}
-		
+
 		/**
 		 * 直接赋值的样式权重最大
 		 */
@@ -400,6 +410,12 @@ class Element extends React.Component {
 		}
 		if(this.htmlProps._css) {
 			this.htmlProps.style = htmlCssParser.parse(this.htmlProps._css, this.tagName());
+		}
+		//
+		if(conf && conf.isBubble == false){
+			
+		}else{
+			this._walkAndBindParent();
 		}
 	}
 	/**

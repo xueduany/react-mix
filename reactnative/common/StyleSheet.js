@@ -72,10 +72,11 @@ class StyleSheet{
 					if(/\s+/.test(k)){
 						var a = k.split(/\s+/);
 						var k1 = a.pop();
-						sheets['+' + k1] = {
+						sheets['+' + k1] = sheets['+' + k1] || [];
+						sheets['+' + k1].push({
 								css: cssObject[k],
 								inherit: a
-						}
+						});
 					}else{
 						sheets[k] = cssObject[k];
 					}

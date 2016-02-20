@@ -1,0 +1,168 @@
+body * {
+	font-family:"Consolas","Microsoft Yahei", Arial, sans-serif;
+}
+
+body {
+	background: white;
+	margin: 0;
+	padding: 0;
+}
+.sup {
+	
+	
+}
+.container {
+}
+
+.container .title{
+	color: #bbb;
+	font-weight: bold;
+	margin-bottom: 10px;
+	background: #555;
+	padding: 5px 15px;
+}
+
+.adlink {
+	text-align: center;
+	font-size: 11pt;
+}
+
+.adlink a {
+	text-decoration: none;
+	display:block;
+	color: #666;
+	font-weight: bold;
+	margin-bottom: 10px;
+	background: #eee;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	padding: 10pt;
+	margin-top: 10pt;
+}
+
+.date{
+	font-size:17pt;
+	font-weight: bold;
+	line-height: 30pt;
+	text-align: center;
+}
+
+.split, .clear {
+	clear: both;
+	height: 1px;
+	overflow-y: hidden;
+}
+
+.good, .bad {
+	display: flex;
+	flex-direction: row;
+}
+
+.bad {
+	/*top: -1px;*/
+}
+
+.good .title, .bad .title {
+	flex: 1;
+	font-weight: bold;
+	text-align: center;
+	font-size: 30pt;
+}
+
+
+.good .title {
+	background: #ffee44;
+}
+
+.someday .good .title {
+	background: #aaaaaa;
+}
+
+.bad .title {
+	background: #ff4444;
+	color: #fff;
+}
+
+.someday .bad .title {
+	background: #666666;
+	color: #fff;
+}
+
+.good .content, .bad .content {
+	flex: 1;
+	padding-right: 10px;
+	padding-top: 1px;
+	font-size:15pt;
+}
+
+.someday .good {
+	background: #dddddd;
+}
+
+.someday .bad {
+	background: #aaaaaa;
+}
+
+.good {
+	background: #ffffaa;
+}
+
+.bad {
+	background: #ffddd3;
+}
+
+.content ul {
+	list-style: none;
+	margin:10px 0 0;
+	padding:0;
+}
+
+.content ul li {
+	line-height:150%;
+	font-size: 15pt;
+	font-weight: bold;
+	color: #444;
+}
+
+.content ul li div.description {
+	font-size: 11pt;
+	font-weight: normal;
+	color: #777;
+	line-height: 110%;
+	margin-bottom: 10px;
+}
+
+.line-tip {
+	font-size: 11pt;
+	margin-top: 10px;
+	margin-left: 10px;
+}
+
+.direction_value {
+	color:#4a4;
+	font-weight: bold;
+}
+
+.someday .direction_value {
+	color:#888;
+}
+
+.goddes_value {
+	color: #f87;
+}
+
+.someday .goddes_value {
+	color: #777;
+}
+
+.comment {
+	margin-top: 50px;
+	font-size: 11pt;
+	margin-left: 10px;
+}
+
+.comment ul {
+	margin-left: 0;
+	padding-left: 20px;
+	color: #999;
+}

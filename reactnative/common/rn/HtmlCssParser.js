@@ -53,11 +53,12 @@ class HtmlCssParser{
 		//crack
 
 		//
+		
 		return htmlCssObj;
 	}
 	filterViewStyle(m){
 		var n = {};
-		var removeList = ['fontSize', 'display', 'color', 'textAlign'];
+		var removeList = ['fontSize', 'display', 'color', 'textAlign','lineHeight', 'fontWeight'];
 		for(var p in m){
 			if(removeList.indexOf(p) == -1){
 				n[p] = m[p]
@@ -70,6 +71,16 @@ class HtmlCssParser{
 		var removeList = ['display'];
 		for(var p in m){
 			if(removeList.indexOf(p) == -1){
+				n[p] = m[p]
+			}
+		}
+		return n;
+	}
+	canInherit(m){
+		var n = {};
+		var canI = ['fontSize', 'textAlign', 'color', 'lineHeight', 'fontWeight'];
+		for(var p in m){
+			if(canI.indexOf(p) > -1){
 				n[p] = m[p]
 			}
 		}
