@@ -15,7 +15,7 @@ function (error, stdout, stderr){
 		console.log('exec error: ' + error);
 	}
 	//step2
-	var cmd2 = 'cd reactnative;react-native bundle --platform ios --entry-file index.js --bundle-output ../build/part2.js';
+	var cmd2 = 'cd reactnative;react-native bundle --platform ios --entry-file index.ios.js --bundle-output ../build/part2.js';
 	process.exec(cmd2,
 	function (error, stdout, stderr){
 		console.log(cmd2);

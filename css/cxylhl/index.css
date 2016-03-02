@@ -12,12 +12,12 @@ body {
 	
 }
 .container {
+
 }
 
 .container .title{
 	color: #bbb;
 	font-weight: bold;
-	margin-bottom: 10px;
 	background: #555;
 	padding: 5px 15px;
 }
@@ -63,12 +63,15 @@ body {
 }
 
 .good .title, .bad .title {
-	flex: 1;
+	flex: 0.5;
 	font-weight: bold;
-	text-align: center;
-	font-size: 30pt;
+	font-size: 2rem;
+	display: flex;
 }
+.good .title .title-text, .bad .title .title-text{
 
+	
+}
 
 .good .title {
 	background: #ffee44;

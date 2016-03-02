@@ -235,65 +235,28 @@ function addToBad(event) {
 					{getTodayString()}
 				</Div>
 				<Div className="good">
-					<Div className="title">
-						<Div>
-							<Div>宜</Div>
-						</Div>
-					</Div>
+					<Div className="title" style={{backgroundColor: 'black'}}>宜</Div>
 					<Div className="content">
-						{
-							this.state.good.map(function(event, i){
-								return (
-										<Div key={i}>
-											<Div className="name">{event.name}</Div><Div className="description">{event.good}</Div>
-										</Div>
-								);
-							})
-							
-						}
+					kqwjelqkwjelkqjw
+					kqwjelqkwjelkqjw
+					kqwjelqkwjelkqjw
+					kqwjelqkwjelkqjw
+					kqwjelqkwjelkqjw
+					kqwjelqkwjelkqjw
+					kqwjelqkwjelkqjw
+					kqwjelqkwjelkqjw
+					kqwjelqkwjelkqjw
+					kqwjelqkwjelkqjw
+					kqwjelqkwjelkqjw
+					kqwjelqkwjelkqjw
+					kqwjelqkwjelkqjw
+					kqwjelqkwjelkqjw
+					kqwjelqkwjelkqjw
+					kqwjelqkwjelkqjw
+					kqwjelqkwjelkqjw
 					</Div>
-				</Div>
-				<Div className="spDivt"></Div>
-				<Div className="bad">
-					<Div className="title">
-						<Div>
-							<Div>不宜</Div>
-						</Div>
-					</Div>
-					<Div className="content">
-						{
-							this.state.bad.map(function(event, i){
-								return (
-										<Div key={i}>
-											<Div className="name">{event.name}</Div><Div className="description">{event.good}</Div>
-										</Div>
-								);
-							})
-							
-						}
-					</Div>
-				</Div>
-				<Div className="spDivt"></Div>
-				<Div className="Divne-tip">
-					<Span>座位朝向：</Span>面向<Span className="direction_value">{directions[random(iday, 2) % directions.length]}</Span>写程序，BUG 最少。
-				</Div>
-				<Div className="Divne-tip">
-					<Span>今日宜饮：</Span><Span className="drink_value">{pickRandom(drinks,2).join('，')}</Span>
-				</Div>
-				<Div className="Divne-tip">
-					<Span>女神亲近指数：</Span><Span className="goddes_value">{star(random(iday, 6) % 5 + 1)}</Span>
-				</Div>
-				<Div className="adDivnk">
-					<A href="http://sandbox.runjs.cn/show/yu9cs4i4" target="dev_qiu_qian">想求签？</A>
 				</Div>
 				
-				<Div className="comment">
-					<Div>
-						<Div>本老黄历尚处于beta阶段，作者随时会修改，所以如果上午看到的内容跟下午不同，请勿惊慌；</Div>
-						<Div>本老黄历仅面向程序员；</Div>
-						<Div>本老黄历内容是程序生成的，因为只有这样程序员才会信。</Div>
-					</Div>
-				</Div>
 			</Div>
 		</Div>
 		);

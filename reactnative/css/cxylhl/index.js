@@ -12,7 +12,6 @@ var styles = {
   ".container .title": {
     "color": "#bbbbbb",
     "fontWeight": "bold",
-    "marginBottom": "10px",
     "backgroundColor": "#555555",
     "paddingTop": "5px",
     "paddingBottom": "5px",
@@ -56,20 +55,20 @@ var styles = {
     "backgroundColor": "#ffddd3"
   },
   ".good .title": {
-    "flex": "1",
+    "flex": "0.5",
     "fontWeight": "bold",
-    "textAlign": "center",
-    "fontSize": "30pt",
+    "fontSize": "2rem",
     "backgroundColor": "#ffee44"
   },
   ".bad .title": {
-    "flex": "1",
+    "flex": "0.5",
     "fontWeight": "bold",
-    "textAlign": "center",
-    "fontSize": "30pt",
+    "fontSize": "2rem",
     "backgroundColor": "#ff4444",
     "color": "#ffffff"
   },
+  ".good .title .title-text": {},
+  ".bad .title .title-text": {},
   ".someday .good .title": {
     "backgroundColor": "#aaaaaa"
   },

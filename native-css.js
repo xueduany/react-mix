@@ -200,10 +200,10 @@ function transformRules(self, rules, result) {
 							});
 					rule.selectors.forEach(function(selector) {
 						var name = self.nameGenerator(selector.trim());
-						if(result[name]){
+						if(name in result){
 							Object.assign(result[name], obj);
 						}else{
-							result[name] = {};
+							result[name] = Object.assign({}, obj);;
 						}
 					});
 				}
