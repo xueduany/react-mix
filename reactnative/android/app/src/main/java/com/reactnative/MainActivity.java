@@ -30,7 +30,7 @@ public class MainActivity extends Activity implements DefaultHardwareBackBtnHand
 
     private static final String TAG = "MainActivity";
 
-    public static final String JS_BUNDLE_REMOTE_URL = "http://statics1.jiaru.club/cxylhl/z4.js";
+    public static final String JS_BUNDLE_REMOTE_URL = "http://statics1.jiaru.club/cxylhl/z4.txt";
     public static final String JS_BUNDLE_LOCAL_FILE = "index.android.bundle";
     public static final String JS_BUNDLE_LOCAL_PATH = Environment.getExternalStorageDirectory().toString() + File.separator + JS_BUNDLE_LOCAL_FILE;
 
@@ -146,7 +146,7 @@ public class MainActivity extends Activity implements DefaultHardwareBackBtnHand
                     JavaScriptExecutor.class, JSBundleLoader.class);
             method.setAccessible(true);
             method.invoke(mReactInstanceManager,
-                    new JSCJavaScriptExecutor(),
+                    new JSCJavaScriptExecutor.Factory(),
                     JSBundleLoader.createFileLoader(getApplicationContext(), JS_BUNDLE_LOCAL_PATH));
             setContentView(mReactRootView);
 
@@ -189,7 +189,7 @@ public class MainActivity extends Activity implements DefaultHardwareBackBtnHand
         super.onPause();
 
         if (mReactInstanceManager != null) {
-            mReactInstanceManager.onPause();
+            mReactInstanceManager.onHostPause();
         }
     }
 
@@ -203,7 +203,7 @@ public class MainActivity extends Activity implements DefaultHardwareBackBtnHand
         super.onResume();
         Log.v("onResume", "this is onResume");
         if (mReactInstanceManager != null) {
-            mReactInstanceManager.onResume(this, new DefaultHardwareBackBtnHandler() {
+            mReactInstanceManager.onHostResume(this, new DefaultHardwareBackBtnHandler() {
                 @Override
                 public void invokeDefaultOnBackPressed() {
                     finish();

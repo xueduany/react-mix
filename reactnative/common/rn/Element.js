@@ -59,13 +59,17 @@ class Element extends React.Component {
 										this.props.children;
 		var self = this;
 		this.childNodes && this.childNodes.forEach(function(node){
-			if(node && node._store){
-				try{
-					node._store.parentNode = self;
-
-					node._store.inheritStyle = htmlCssParser.canInherit(self.htmlProps._css);
-				}catch(e){
-					console.debug(e);
+			if(node){
+				console.debug('aaaaaaaaa')
+				console.debug(node);
+				if(node._store){
+					try{
+						node._store.parentNode = self;
+	
+						node._store.inheritStyle = htmlCssParser.canInherit(self.htmlProps._css);
+					}catch(e){
+						console.debug(e);
+					}
 				}
 			}
 		})
@@ -75,6 +79,8 @@ class Element extends React.Component {
 			var o =this._reactInternalInstance._currentElement;
 			if(o && o._store && o._store.parentNode){
 				return o._store.parentNode; 
+			}else if(this.props.parentNode){
+				return this.props.parentNode;
 			}
 		}
 		return null;
@@ -180,11 +186,13 @@ class Element extends React.Component {
 						fontStyle: null,
 						fontWeight: null,
 						letterSpacing: null,
-						textAlign: null,
+						textAlign: 'justify',
 						textDecorationLine: null,
 						textDecorationStyle: null,
 						textDecorationColor: null,
-						writingDirection: null
+						writingDirection: null,
+						lineHeight: null,
+						textAlignVertical: 'center'
 					}, this.htmlProps.style)}>{this.state.children}</Text>
 				</View>
 				</TouchableWithoutFeedback>
@@ -314,7 +322,6 @@ class Element extends React.Component {
 						var find = false;
 						var par = self;
 						var maxLoop = 999;
-
 						while(css.length && (par = par.parentNode()) && (maxLoop> 0)){
 							maxLoop--;
 							var cur = css[css.length -1];
@@ -416,6 +423,11 @@ class Element extends React.Component {
 			
 		}else{
 			this._walkAndBindParent();
+		}
+	}
+	_defineParentNode(parentNode){
+		if(this._reactInternalInstance._currentElement._store){
+			this._reactInternalInstance._currentElement._store.parentNode = parentNode;
 		}
 	}
 	/**

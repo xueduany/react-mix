@@ -1,4 +1,7 @@
 var styles = {
+  ".custom-native-header": {
+    "marginTop": "20pt"
+  },
   ".native-header": {
     "flexDirection": "row",
     "alignItems": "center",

@@ -7,9 +7,13 @@ body {
 	margin: 0;
 	padding: 0;
 }
+.header {
+	flex-direction: row;
+}
 .sup {
-	
-	
+	font-size: 0.4rem;
+	background: yellow;
+	color: red;
 }
 .container {
 
@@ -73,8 +77,22 @@ body {
 	
 }
 
+.good {
+	background: #ffee44;
+}
+
+.bad {
+	background: #ff4444;
+}
+
 .good .title {
 	background: #ffee44;
+	align-self: center;
+	text-align: center;
+	
+}
+.good .content {
+	background: #ffffaa;
 }
 
 .someday .good .title {
@@ -84,6 +102,11 @@ body {
 .bad .title {
 	background: #ff4444;
 	color: #fff;
+	align-self: center;
+	text-align: center;
+}
+.bad .content {
+	background: #ffddd3;
 }
 
 .someday .bad .title {
@@ -93,9 +116,7 @@ body {
 
 .good .content, .bad .content {
 	flex: 1;
-	padding-right: 10px;
-	padding-top: 1px;
-	font-size:15pt;
+	padding: 10px;
 }
 
 .someday .good {
@@ -106,40 +127,31 @@ body {
 	background: #aaaaaa;
 }
 
-.good {
-	background: #ffffaa;
-}
 
-.bad {
-	background: #ffddd3;
-}
 
-.content ul {
-	list-style: none;
-	margin:10px 0 0;
-	padding:0;
-}
-
-.content ul li {
-	line-height:150%;
-	font-size: 15pt;
+.content .name {
+	height: 1.5rem;
+	justify-content: center;
+	font-size: 1rem;
 	font-weight: bold;
 	color: #444;
 }
 
-.content ul li div.description {
-	font-size: 11pt;
+.content .description {
+	font-size: 0.7rem;
 	font-weight: normal;
 	color: #777;
-	line-height: 110%;
-	margin-bottom: 10px;
 }
 
-.line-tip {
-	font-size: 11pt;
-	margin-top: 10px;
-	margin-left: 10px;
+.Divne-tip {
+	padding: 10px;
+	flex-direction: row;
+	align-items: center;
 }
+.adDivnk {
+	font-size: 0.5rem;
+}
+
 
 .direction_value {
 	color:#4a4;
@@ -159,13 +171,11 @@ body {
 }
 
 .comment {
-	margin-top: 50px;
 	font-size: 11pt;
-	margin-left: 10px;
+	margin: 10px;
+	color: #999;
 }
 
-.comment ul {
-	margin-left: 0;
-	padding-left: 20px;
-	color: #999;
+.spDivt {
+	font-size: 0.7rem;
 }

@@ -1,7 +1,9 @@
 /**
 ** common/header
 **/
-
+.custom-native-header {
+	margin-top: 20pt;
+}
 .native-header {
 	flex-direction: row;
 	align-items: center;

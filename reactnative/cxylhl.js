@@ -228,35 +228,73 @@ function addToBad(event) {
 		return (
 		<Div id="J_body" className={this.state.bodyClass}>
 			<Div className="container">
-				<Div className="title">
-					<Span className="header"><Span>程序员老黄历</Span><Span className="sup">beta</Span></Span>
-				</Div>
+				<Header>
+					<Div className="title">
+						<Span className="header"><Span>程序员老黄历</Span><Div className="sup">beta</Div></Span>
+					</Div>
+				</Header>
 				<Div className="date">
 					{getTodayString()}
 				</Div>
 				<Div className="good">
-					<Div className="title" style={{backgroundColor: 'black'}}>宜</Div>
+					<Div className="title">
+						<Div>
+							<Div className="b">宜</Div>
+						</Div>
+					</Div>
 					<Div className="content">
-					kqwjelqkwjelkqjw
-					kqwjelqkwjelkqjw
-					kqwjelqkwjelkqjw
-					kqwjelqkwjelkqjw
-					kqwjelqkwjelkqjw
-					kqwjelqkwjelkqjw
-					kqwjelqkwjelkqjw
-					kqwjelqkwjelkqjw
-					kqwjelqkwjelkqjw
-					kqwjelqkwjelkqjw
-					kqwjelqkwjelkqjw
-					kqwjelqkwjelkqjw
-					kqwjelqkwjelkqjw
-					kqwjelqkwjelkqjw
-					kqwjelqkwjelkqjw
-					kqwjelqkwjelkqjw
-					kqwjelqkwjelkqjw
+						{
+							this.state.good.map(function(event, i){
+								return (
+										<Div key={i}>
+											<Div className="name">{event.name}</Div><Div className="description">{event.good}</Div>
+										</Div>
+								);
+							})
+							
+						}
 					</Div>
 				</Div>
+				<Div className="spDivt"></Div>
+				<Div className="bad">
+					<Div className="title">
+						<Div>
+							<Div className="b">不宜</Div>
+						</Div>
+					</Div>
+					<Div className="content">
+						{
+							this.state.bad.map(function(event, i){
+								return (
+										<Div key={i}>
+											<Div className="name">{event.name}</Div><Div className="description">{event.good}</Div>
+										</Div>
+								);
+							})
+							
+						}
+					</Div>
+				</Div>
+				<Div className="spDivt">
+					<Span className="Divne-tip">
+						<Span>座位朝向：</Span>面向<Span className="direction_value">{directions[random(iday, 2) % directions.length]}</Span><Span>写程序，BUG 最少。</Span>
+					</Span>
+					<Span className="Divne-tip">
+						<Span>今日宜饮：</Span><Span className="drink_value">{pickRandom(drinks,2).join('，')}</Span>
+					</Span>
+					<Span className="Divne-tip">
+						<Span>女神亲近指数：</Span><Span className="goddes_value">{star(random(iday, 6) % 5 + 1)}</Span>
+					</Span>
+
+				</Div>
 				
+				<Div className="comment">
+					<Div>
+						<Div>本老黄历尚处于beta阶段，作者随时会修改，所以如果上午看到的内容跟下午不同，请勿惊慌；</Div>
+						<Div>本老黄历仅面向程序员；</Div>
+						<Div>本老黄历内容是程序生成的，因为只有这样程序员才会信。</Div>
+					</Div>
+				</Div>
 			</Div>
 		</Div>
 		);

@@ -7,7 +7,14 @@ var styles = {
     "margin": "0",
     "padding": "0"
   },
-  ".sup": {},
+  ".header": {
+    "flexDirection": "row"
+  },
+  ".sup": {
+    "fontSize": "0.4rem",
+    "backgroundColor": "yellow",
+    "color": "red"
+  },
   ".container": {},
   ".container .title": {
     "color": "#bbbbbb",
@@ -48,45 +55,47 @@ var styles = {
   },
   ".good": {
     "flexDirection": "row",
-    "backgroundColor": "#ffffaa"
+    "backgroundColor": "#ffee44"
   },
   ".bad": {
     "flexDirection": "row",
-    "backgroundColor": "#ffddd3"
+    "backgroundColor": "#ff4444"
   },
   ".good .title": {
     "flex": "0.5",
     "fontWeight": "bold",
     "fontSize": "2rem",
-    "backgroundColor": "#ffee44"
+    "backgroundColor": "#ffee44",
+    "alignSelf": "center",
+    "textAlign": "center"
   },
   ".bad .title": {
     "flex": "0.5",
     "fontWeight": "bold",
     "fontSize": "2rem",
     "backgroundColor": "#ff4444",
-    "color": "#ffffff"
+    "color": "#ffffff",
+    "alignSelf": "center",
+    "textAlign": "center"
   },
   ".good .title .title-text": {},
   ".bad .title .title-text": {},
+  ".good .content": {
+    "backgroundColor": "#ffffaa",
+    "flex": "1",
+    "padding": "10px"
+  },
   ".someday .good .title": {
     "backgroundColor": "#aaaaaa"
+  },
+  ".bad .content": {
+    "backgroundColor": "#ffddd3",
+    "flex": "1",
+    "padding": "10px"
   },
   ".someday .bad .title": {
     "backgroundColor": "#666666",
     "color": "#ffffff"
-  },
-  ".good .content": {
-    "flex": "1",
-    "paddingRight": "10px",
-    "paddingTop": "1px",
-    "fontSize": "15pt"
-  },
-  ".bad .content": {
-    "flex": "1",
-    "paddingRight": "10px",
-    "paddingTop": "1px",
-    "fontSize": "15pt"
   },
   ".someday .good": {
     "backgroundColor": "#dddddd"
@@ -94,30 +103,25 @@ var styles = {
   ".someday .bad": {
     "backgroundColor": "#aaaaaa"
   },
-  ".content ul": {
-    "marginTop": "10px",
-    "marginRight": "0",
-    "marginLeft": "0",
-    "marginBottom": "0",
-    "padding": "0"
-  },
-  ".content ul li": {
-    "lineHeight": "150%",
-    "fontSize": "15pt",
+  ".content .name": {
+    "height": "1.5rem",
+    "justifyContent": "center",
+    "fontSize": "1rem",
     "fontWeight": "bold",
     "color": "#444444"
   },
-  ".content ul li div.description": {
-    "fontSize": "11pt",
+  ".content .description": {
+    "fontSize": "0.7rem",
     "fontWeight": "normal",
-    "color": "#777777",
-    "lineHeight": "110%",
-    "marginBottom": "10px"
+    "color": "#777777"
   },
-  ".line-tip": {
-    "fontSize": "11pt",
-    "marginTop": "10px",
-    "marginLeft": "10px"
+  ".Divne-tip": {
+    "padding": "10px",
+    "flexDirection": "row",
+    "alignItems": "center"
+  },
+  ".adDivnk": {
+    "fontSize": "0.5rem"
   },
   ".direction_value": {
     "color": "#4a44a4",
@@ -133,14 +137,12 @@ var styles = {
     "color": "#777777"
   },
   ".comment": {
-    "marginTop": "50px",
     "fontSize": "11pt",
-    "marginLeft": "10px"
-  },
-  ".comment ul": {
-    "marginLeft": "0",
-    "paddingLeft": "20px",
+    "margin": "10px",
     "color": "#999999"
+  },
+  ".spDivt": {
+    "fontSize": "0.7rem"
   }
 }
 module.exports = styles;
