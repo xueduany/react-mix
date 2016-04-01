@@ -51,7 +51,7 @@ class Header extends Element {
 		var self = this;
 		if(this.props.children){
 			return (
-				<Div ref={()=>{this._defineParentNode(self);console.debug(this)}} id={this.props.id} className="custom-native-header">
+				<Div parentNode={self} id={this.props.id} className="custom-native-header">
 					{this.props.children}
 				</Div>
 			)

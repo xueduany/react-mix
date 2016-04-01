@@ -11,6 +11,7 @@
 	height: 40pt;
 	color: #ffffff;
 	background-color: rgb(9,159,222);
+	margin-top: 20pt;
 }
 .native-header-box {
 	flex: 1;

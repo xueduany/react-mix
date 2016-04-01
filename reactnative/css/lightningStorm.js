@@ -8,7 +8,8 @@ var styles = {
     "justifyContent": "center",
     "height": "40pt",
     "color": "#ffffff",
-    "backgroundColor": "rgb(9,159,222)"
+    "backgroundColor": "rgb(9,159,222)",
+    "marginTop": "20pt"
   },
   ".native-header-box": {
     "flex": "1",

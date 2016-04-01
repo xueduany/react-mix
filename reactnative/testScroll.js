@@ -1,0 +1,70 @@
+
+(class Test extends App{
+	render() {
+		  return (
+				  <View>
+				  <ScrollView>
+				  <View><Text>kqwjelkqjwelkjqwlke</Text></View>
+				  <View><Text>kqwjelkqjwelkjqwlke</Text></View>
+			  		<View><Text>asdasdasdasdasdasdasd</Text></View>
+			  		<View><Text>kqwjelkqjwelkjqwlke</Text></View>
+			  		<View><Text>asdasdasdasdasdasdasd</Text></View>
+			  		<View><Text>kqwjelkqjwelkjqwlke</Text></View>
+			  		<View><Text>asdasdasdasdasdasdasd</Text></View>
+			  		<View><Text>kqwjelkqjwelkjqwlke</Text></View>
+			  		<View><Text>asdasdasdasdasdasdasd</Text></View>
+			  		<View><Text>kqwjelkqjwelkjqwlke</Text></View>
+			  		<View><Text>asdasdasdasdasdasdasd</Text></View>
+			  		<View><Text>kqwjelkqjwelkjqwlke</Text></View>
+			  		<View><Text>asdasdasdasdasdasdasd</Text></View>
+			  		<View><Text>kqwjelkqjwelkjqwlke</Text></View>
+			  		<View><Text>asdasdasdasdasdasdasd</Text></View>
+			  		<View><Text>kqwjelkqjwelkjqwlke</Text></View>
+			  		<View><Text>asdasdasdasdasdasdasd</Text></View>
+			  		<View><Text>kqwjelkqjwelkjqwlke</Text></View>
+			  		<View><Text>asdasdasdasdasdasdasd</Text></View>
+			  		<View><Text>kqwjelkqjwelkjqwlke</Text></View>
+			  		<View><Text>asdasdasdasdasdasdasd</Text></View>
+			  		<View><Text>kqwjelkqjwelkjqwlke</Text></View>
+			  		<View><Text>asdasdasdasdasdasdasd</Text></View>
+			  		<View><Text>kqwjelkqjwelkjqwlke</Text></View>
+			  		<View><Text>asdasdasdasdasdasdasd</Text></View>
+			  		<View><Text>kqwjelkqjwelkjqwlke</Text></View>
+			  		<View><Text>asdasdasdasdasdasdasd</Text></View>
+			  		<View><Text>kqwjelkqjwelkjqwlke</Text></View>
+			  		<View><Text>asdasdasdasdasdasdasd</Text></View>
+			  		<View><Text>kqwjelkqjwelkjqwlke</Text></View>
+			  		<View><Text>asdasdasdasdasdasdasd</Text></View>
+			  		<View><Text>kqwjelkqjwelkjqwlke</Text></View>
+			  		<View><Text>asdasdasdasdasdasdasd</Text></View>
+			  		<View><Text>kqwjelkqjwelkjqwlke</Text></View>
+			  		<View><Text>asdasdasdasdasdasdasd</Text></View>
+			  		<View><Text>kqwjelkqjwelkjqwlke</Text></View>
+			  		<View><Text>asdasdasdasdasdasdasd</Text></View>
+			  		<View><Text>kqwjelkqjwelkjqwlke</Text></View>
+			  		<View><Text>asdasdasdasdasdasdasd</Text></View>
+			  		<View><Text>kqwjelkqjwelkjqwlke</Text></View>
+			  		<View><Text>asdasdasdasdasdasdasd</Text></View>
+			  		<View><Text>kqwjelkqjwelkjqwlke</Text></View>
+			  		<View><Text>asdasdasdasdasdasdasd</Text></View>
+			  		<View><Text>kqwjelkqjwelkjqwlke</Text></View>
+			  		<View><Text>asdasdasdasdasdasdasd</Text></View>
+			  		<View><Text>kqwjelkqjwelkjqwlke</Text></View>
+			  		<View><Text>asdasdasdasdasdasdasd</Text></View>
+			  		<View><Text>kqwjelkqjwelkjqwlke</Text></View>
+			  		<View><Text>asdasdasdasdasdasdasd</Text></View>
+			  		<View><Text>kqwjelkqjwelkjqwlke</Text></View>
+			  		<View><Text>asdasdasdasdasdasdasd</Text></View>
+			  		<View><Text>kqwjelkqjwelkjqwlke</Text></View>
+			  		<View><Text>asdasdasdasdasdasdasd</Text></View>
+			  		<View><Text>kqwjelkqjwelkjqwlke</Text></View>
+			  		<View><Text>asdasdasdasdasdasdasd</Text></View>
+			  		<View><Text>kqwjelkqjwelkjqwlke</Text></View>
+			  		<View><Text>asdasdasdasdasdasdasd</Text></View>
+			  		</ScrollView>
+			  		
+				  </View>
+				  	
+		  );
+	}
+}).run();

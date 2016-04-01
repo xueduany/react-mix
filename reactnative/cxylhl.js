@@ -230,7 +230,7 @@ function addToBad(event) {
 			<Div className="container">
 				<Header>
 					<Div className="title">
-						<Span className="header"><Span>程序员老黄历</Span><Div className="sup">beta</Div></Span>
+						<Div className="header"><Span>程序员老黄历</Span><Div className="sup">beta</Div></Div>
 					</Div>
 				</Header>
 				<Div className="date">

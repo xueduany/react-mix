@@ -60,8 +60,6 @@ class Element extends React.Component {
 		var self = this;
 		this.childNodes && this.childNodes.forEach(function(node){
 			if(node){
-				console.debug('aaaaaaaaa')
-				console.debug(node);
 				if(node._store){
 					try{
 						node._store.parentNode = self;
