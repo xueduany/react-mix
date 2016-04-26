@@ -226,6 +226,7 @@ function addToBad(event) {
 	
 	render() {
 		return (
+				<Body>
 		<Div id="J_body" className={this.state.bodyClass}>
 			<Div className="container">
 				<Header>
@@ -297,6 +298,7 @@ function addToBad(event) {
 				</Div>
 			</Div>
 		</Div>
+		</Body>
 		);
 	}
 	
